@@ -1,0 +1,33 @@
+<html>
+
+<body>
+  <script>
+  /**
+   * @param {number[]} nums
+   * @param {number} target
+   * @return {number[]}
+   */
+  var twoSum = function(nums, target) {
+      // valid check
+      if(!nums || !nums.length > 0) return;
+
+      var resultIndeces = [];
+      var numsToAdd = nums;
+      for(var i = 0; i < nums.length; i++)
+      {
+          for(var j = 0; j < numsToAdd.length; j++)
+          {
+              if(i === j) continue;
+              if(nums[i] + numsToAdd[j] === target) {
+                  // matched!
+                  return [i, j];
+              }
+          }
+
+      }
+  };
+  </script>
+
+</body>
+
+</html>

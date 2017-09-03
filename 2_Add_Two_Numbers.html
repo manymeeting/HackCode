@@ -1,0 +1,124 @@
+<html>
+<!--
+2. Add Two Numbers
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+
+-->
+
+<body>
+  <script>
+  /**
+   * Definition for singly-linked list.
+   * function ListNode(val) {
+   *     this.val = val;
+   *     this.next = null;
+   * }
+   */
+
+  function ListNode(val) {
+      this.val = val;
+      this.next = null;
+  };
+
+
+  // ListNode-based implementation
+  var addTwoNumbers = function(l1, l2) {
+    if(!l1 || !l2) return;
+    var num1 = listNodeToInt(l1, 0);
+    var num2 = listNodeToInt(l2, 0);
+    // return intToListNode(num1 + num2);
+
+    // use the following code instead to meet the test case expected format
+    var resultStr = (num1 + num2) + "";
+    var result = [];
+    for(var i = 0; i < resultStr.length; i++)
+    {
+      result[i] = parseInt(resultStr.charAt(resultStr.length - 1 - i));
+    }
+    return result;
+  };
+
+  /**
+   * @param pos Position of digit, starts from 0
+   * @param node Current node
+   * @return Result integer
+   */
+  var listNodeToInt = function(node, pos) {
+    var currentVal = parseInt(node.val * Math.pow(10, pos));
+    if(node.next)
+    {
+      return currentVal + listNodeToInt(node.next, pos+1);
+    }
+    else
+    {
+      return currentVal;
+    }
+  };
+
+
+  var intToListNode = function(val) {
+    var valStr = val + "";
+    var resultNode = new ListNode(parseInt(valStr.charAt(valStr.length - 1)));
+    for(var i = valStr.length - 1 ; i > 0; i--)
+    {
+      if(i - 1 >= 0)
+      {
+        resultNode.next = new ListNode(parseInt(valStr.charAt(i-1)));
+      }
+    }
+
+    return resultNode;
+  };
+
+
+  var testNodeA = new ListNode(2);
+  testNodeA.next = new ListNode(3);
+
+  var testNodeB = new ListNode(4);
+  testNodeB.next = new ListNode(5);
+
+
+  var result = addTwoNumbers(testNodeA, testNodeB);
+  console.log(result);
+
+  // // Array-based implementation
+  // /**
+  //  * @param {ListNode} l1
+  //  * @param {ListNode} l2
+  //  * @return {ListNode}
+  //  */
+  // var addTwoNumbers = function(l1, l2) {
+  //   var num1 = toRealIntNumber(l1);
+  //   var num2 = toRealIntNumber(l2);
+  //   var resultStr = (num1 + num2) + "";
+  //   var result = [];
+  //   for(var i = 0; i < resultStr.length; i++)
+  //   {
+  //     result[i] = parseInt(resultStr.charAt(len - i));
+  //   }
+  //   return result;
+  // };
+  //
+  // var toRealIntNumber = function(intArray) {
+  //   var result = 0;
+  //   var len = intArray.length;
+  //   for (var i = 0; i < len; i++)
+  //   {
+  //     result += intArray[i] * Math.pow(10, i);
+  //   }
+  //   return result;
+  // };
+  //
+  //
+  // var result = addTwoNumbers([2,4,3], [5,6,4]);
+  // console.log(result);
+  </script>
+
+</body>
+
+</html>
