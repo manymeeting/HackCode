@@ -1,0 +1,112 @@
+<html>
+
+<body>
+  <!--
+  Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+  push(x) - Push element x onto stack.
+  pop() - Removes the element on top of the stack.
+  top() - Get the top element.
+  getMin() - Retrieve the minimum element in the stack.
+  Example:
+  MinStack minStack = new MinStack();
+  minStack.push(-2);
+  minStack.push(0);
+  minStack.push(-3);
+  minStack.getMin();   -> Returns -3.
+  minStack.pop();
+  minStack.top();      -> Returns 0.
+  minStack.getMin();   -> Returns -2.
+
+  -->
+  <script>
+  /**
+   * initialize your data structure here.
+   */
+  var MinStack = function() {
+    this.values = [];
+    this.min = null;
+  };
+
+  /**
+   * @param {number} x
+   * @return {void}
+   */
+  MinStack.prototype.push = function(x) {
+    // update min
+    if(this.min === null)
+    {
+      this.min = x;
+      this.values.push(0);
+    }
+    else
+    {
+      this.values.push(x - this.min);
+      if(this.min > x) this.min = x;
+    }
+  };
+
+  /**
+   * @return {void}
+   */
+  MinStack.prototype.pop = function() {
+    let len = this.values.length;
+    if(!len > 0) return;
+    if(this.values[len - 1] < 0)
+    {
+      // update min
+      this.min = this.min - this.values[len - 1];
+    }
+
+    this.values = this.values.slice(0, len-1);
+    // reset min when empty
+    if(this.values.length === 0) this.min = null;
+  };
+
+  /**
+   * @return {number}
+   */
+  MinStack.prototype.top = function() {
+    let len = this.values.length;
+    if(len <= 0) return null;
+
+    return this.values[len - 1] >= 0 ? this.min + this.values[len - 1] : this.min;
+  };
+
+  /**
+   * @return {number}
+   */
+  MinStack.prototype.getMin = function() {
+    return this.min;
+  };
+
+  /**
+   * Your MinStack object will be instantiated and called as such:
+   * var obj = Object.create(MinStack).createNew()
+   * obj.push(x)
+   * obj.pop()
+   * var param_3 = obj.top()
+   * var param_4 = obj.getMin()
+   */
+   let minStack = new MinStack();
+   console.log(minStack.push(2147483646));
+   console.log(minStack.push(2147483646));
+   console.log(minStack.push(2147483647));
+   console.log(minStack.top());
+   console.log(minStack.pop());
+   console.log(minStack.getMin());
+   console.log(minStack.pop());
+   console.log(minStack.getMin());
+   console.log(minStack.pop());
+   console.log(minStack.push(2147483647));
+   console.log(minStack.top());
+   console.log(minStack.getMin());
+   console.log(minStack.push(-2147483648));
+   console.log(minStack.top());
+
+
+  </script>
+
+</body>
+
+</html>
