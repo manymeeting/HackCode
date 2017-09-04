@@ -1,0 +1,97 @@
+<html>
+
+<body>
+  <!--
+  Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+
+  Example:
+
+  Input: "babad"
+
+  Output: "bab"
+
+  Note: "aba" is also a valid answer.
+  Example:
+
+  Input: "cbbd"
+
+  Output: "bb"
+  -->
+
+  <!--
+  Note: Split into two cases, odd palindromic ("xabay") and even palindromic ("aa", "abba")
+  and return directly for single character.
+  -->
+  <script>
+  /**
+   * @param {string} s
+   * @return {string}
+   */
+  var longestPalindrome = function(s) {
+    let shift = 0;
+    let maxPal = "";
+    if(!s) return "";
+
+    // special case
+    if(s.length === 1) return s;
+
+    for (i = 0; i < s.length - 1; i++) {
+      let oddPal, evenPal, pal = "";
+      oddPal = getOddPal(i, s);
+      evenPal = getEvenPal(i, s);
+
+      if(oddPal && evenPal) pal = oddPal.length > evenPal.length ? oddPal : evenPal;
+      else if(oddPal) pal = oddPal;
+      else if(evenPal) pal = evenPal;
+
+      if(maxPal.length < pal.length) maxPal = pal;
+
+    }
+
+    return maxPal;
+  };
+
+  function getOddPal(pos, s) {
+    let result = s.charAt(pos);
+    let maxShift = Math.min(pos - 0, s.length - 1 - pos);
+    for (var i = 1; i <= maxShift; i++)
+    {
+      if(s.charAt(pos - i) === s.charAt(pos + i))
+      {
+        result = s.charAt(pos - i) + result + s.charAt(pos + i);
+      }
+      else
+      {
+        break;
+      }
+    }
+    return result;
+  }
+
+
+  function getEvenPal(pos, s) {
+    if(s.charAt(pos) !== s.charAt(pos + 1)) return null;
+
+    let result = s.charAt(pos) + s.charAt(pos + 1);
+    let maxShift = Math.min(pos - 0, s.length - 2 - pos)
+    for (var i = 1; i <= maxShift; i++)
+    {
+      if(s.charAt(pos - i) === s.charAt(pos + 1 + i))
+      {
+        result = s.charAt(pos - i) + result + s.charAt(pos + 1 + i);
+      }
+      else
+      {
+        break;
+      }
+    }
+    return result;
+  }
+
+  console.log(longestPalindrome("ccd"));
+
+  </script>
+
+</body>
+
+</html>

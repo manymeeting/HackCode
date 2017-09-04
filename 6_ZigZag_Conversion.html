@@ -1,0 +1,59 @@
+<html>
+
+<body>
+  <!--
+  The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+
+  P   A   H   N
+  A P L S I I G
+  Y   I   R
+  And then read line by line: "PAHNAPLSIIGYIR"
+  Write the code that will take a string and make this conversion given a number of rows:
+
+  string convert(string text, int nRows);
+  convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
+
+  -->
+  <script>
+  /**
+   * @param {string} s
+   * @param {number} numRows
+   * @return {string}
+   */
+  var convert = function(s, numRows) {
+    let totalCols = s.length % (numRows + (numRows - 1)/2) === 0 ? 2 * Math.floor(s.length / (numRows + (numRows - 1)/2)) : 2 * Math.floor(s.length / (numRows + (numRows - 1)/2)) + 1;
+
+    let oddRowCount = (totalCols - 1) / 2;
+    let evenRowCount = totalCols;
+    let oddColCount = numRows;
+    let evenColCount = (numRows - 1) / 2;
+
+
+    let result = "";
+    let currRowCount = 0;
+    let currColCount = 0;
+    for (let i = 0; i < s.length; i++) {
+      let isOddRow = i % (oddRowCount + evenRowCount) <= oddRowCount;
+      if (isOddRow)
+      {
+        let rowNo = Math.floor(i / (oddRowCount + evenRowCount)) + 1;
+        let colNo = i % (oddColCount + evenColCount) <= oddColCount ? Math.floor(i / (oddColCount + evenColCount)) + 1 : Math.floor(i / (oddColCount + evenColCount)) + 2;
+        let index = (colNo - 1) * (oddColCount + evenColCount) + rowNo - 1;
+        result += s.charAt(index);
+      }
+      else
+      {
+        let rowNo = Math.floor(i / (oddRowCount + evenRowCount)) + 2;
+        let colNo = i % (oddColCount + evenColCount) <= oddColCount ? Math.floor(i / (oddColCount + evenColCount)) + 1 : Math.floor(i / (oddColCount + evenColCount)) + 2;
+        let index = (colNo - 1) * (oddColCount + evenColCount) + rowNo - 1;
+        result += s.charAt(index);
+      }
+    }
+    return result;
+  };
+
+  console.log(convert("PAYPALISHIRING", 3));
+  </script>
+
+</body>
+</html>
