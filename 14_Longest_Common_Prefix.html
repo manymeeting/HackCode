@@ -1,0 +1,45 @@
+<html>
+
+<body>
+  <!--
+  Write a function to find the longest common prefix string amongst an array of strings.
+
+  -->
+  <script>
+  /**
+   * @param {string[]} strs
+   * @return {string}
+   */
+  var longestCommonPrefix = function(strs) {
+    let maxCommonPre = "";
+    let minStrLen = -1;
+    for (let i = 0; i < strs.length; i++) {
+      // initialize minStrLen
+      if (minStrLen < 0) {
+        minStrLen = strs[i].length;
+      }
+
+      if(strs[i].length <  minStrLen) minStrLen = strs[i].length;
+
+    }
+
+    for (let i = 0; i < minStrLen; i++) {
+      let currChar = strs[0].charAt(i);
+      for (let j = 0; j < strs.length; j++) {
+        if(strs[j].charAt(i) !== currChar)
+        {
+          return maxCommonPre;
+        }
+      }
+      maxCommonPre += currChar;
+    }
+
+    return maxCommonPre;
+  };
+
+  console.log(longestCommonPrefix(["a"]));
+  </script>
+
+</body>
+
+</html>
