@@ -1,0 +1,48 @@
+<html>
+
+<body>
+  <!--
+  Given an input string, reverse the string word by word.
+
+  For example,
+  Given s = "the sky is blue",
+  return "blue is sky the".
+
+  Update (2015-02-12):
+  For C programmers: Try to solve it in-place in O(1) space.
+
+  Clarification:
+  What constitutes a word?
+  A sequence of non-space characters constitutes a word.
+  Could the input string contain leading or trailing spaces?
+  Yes. However, your reversed string should not contain leading or trailing spaces.
+  How about multiple spaces between two words?
+  Reduce them to a single space in the reversed string.
+  -->
+  <script>
+  /**
+   * @param {string} str
+   * @returns {string}
+   */
+  var reverseWords = function(str) {
+    let splitted = str.split(" ");
+    let purified = [];
+    for (var i = 0; i < splitted.length; i++) {
+
+      if(splitted[i] === "" || splitted[i] === null)
+      {
+        continue;
+      }
+      purified.push(splitted[i]);
+    }
+    let result = "";
+    for (var i = purified.length - 1; i >= 0; i--) {
+      result += ((i === purified.length-1 ? "" : " ") + purified[i]);
+    }
+    return result;
+  };
+  </script>
+
+</body>
+
+</html>
