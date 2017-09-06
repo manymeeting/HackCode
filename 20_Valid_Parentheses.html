@@ -1,0 +1,56 @@
+<html>
+
+<body>
+  <!--
+  Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+  The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
+
+  -->
+  <script>
+  /**
+   * @param {string} s
+   * @return {boolean}
+   */
+  var isValid = function(s) {
+    let leftChars = ["(","{","["];
+    let rightChars = [")","}","]"];
+
+    let pairs = new Map();
+    pairs.set(")","(");
+    pairs.set("}","{");
+    pairs.set("]","[");
+    // let pairs = {
+    //   ")": "(",
+    //   "}": "{",
+    //   "]": "["
+    // };
+
+    let leftCharStack = [];
+    for (let i = 0; i < s.length; i++) {
+      let currChar = s.charAt(i);
+      if(leftChars.indexOf(currChar) >= 0)
+      {
+        leftCharStack.push(currChar);
+      }
+      if(rightChars.indexOf(currChar) >= 0)
+      {
+        if(leftCharStack[leftCharStack.length-1] !== pairs.get(currChar))
+        {
+          // incorrect order
+          return false;
+        }
+
+        leftCharStack = leftCharStack.slice(0, leftCharStack.length-1);
+      }
+    }
+    // incorrect number
+    if(leftCharStack.length > 0) return false;
+
+    return true;
+  };
+  </script>
+
+</body>
+
+</html>
