@@ -16,15 +16,15 @@
     let leftChars = ["(","{","["];
     let rightChars = [")","}","]"];
 
-    let pairs = new Map();
-    pairs.set(")","(");
-    pairs.set("}","{");
-    pairs.set("]","[");
-    // let pairs = {
-    //   ")": "(",
-    //   "}": "{",
-    //   "]": "["
-    // };
+    // let pairs = new Map();
+    // pairs.set(")","(");
+    // pairs.set("}","{");
+    // pairs.set("]","[");
+    let pairs = {
+      ")": "(",
+      "}": "{",
+      "]": "["
+    };
 
     let leftCharStack = [];
     for (let i = 0; i < s.length; i++) {
@@ -35,7 +35,7 @@
       }
       if(rightChars.indexOf(currChar) >= 0)
       {
-        if(leftCharStack[leftCharStack.length-1] !== pairs.get(currChar))
+        if(leftCharStack[leftCharStack.length-1] !== pairs[currChar])
         {
           // incorrect order
           return false;
