@@ -1,0 +1,55 @@
+<html>
+
+<body>
+  <!--
+  Given an array of integers, every element appears twice except for one. Find that single one.
+
+  Note:
+  Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+  -->
+  <script>
+  /**
+   * @param {number[]} nums
+   * @return {number}
+   */
+  var singleNumber = function(nums) {
+    let occurCount = new Map();
+    for (let i = 0; i < nums.length; i++) {
+      let occurence = occurCount.get(nums[i]);
+      if(occurence)
+      {
+        if(occurence === 1)
+        {
+          occurCount.delete(nums[i]);
+        }
+        else
+        {
+          occurCount.set(nums[i], occurence++);
+        }
+      }
+      else
+      {
+        occurCount.set(nums[i], 1);
+      }
+    }
+
+    for (let key of occurCount.keys()) {
+      return key;
+    }
+  };
+
+
+   // Using XOR operation (Note: XOR is commutative)
+  //  var singleNumber = function(nums) {
+  //    let result = 0;
+  //    for (var i = 0; i < nums.length; i++) {
+  //      result ^= nums[i];
+  //    }
+  //    return result;
+  //  };
+
+  </script>
+
+</body>
+
+</html>
