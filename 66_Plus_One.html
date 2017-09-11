@@ -14,39 +14,20 @@
    * @return {number[]}
    */
   var plusOne = function(digits) {
-    let hasCarry = false;
-    let overLength = false;
     for (var i = digits.length - 1; i >= 0; i--)
     {
-      if (i === digits.length - 1 && digits[i] === 9)
+      if(digits[i] < 9)
       {
-        hasCarry = true;
-      }
-
-      if (digits[i] === 9 && hasCarry)
-      {
-        digits[i] = 0;
-        if(i===0) overLength = true;
-        continue;
+        digits[i] = digits[i] + 1;
+        return digits;
       }
       else
       {
-        hasCarry = false;
-        digits[i] = digits[i] + 1;
-        break;
+        digits[i] = 0;
       }
     }
-
-    let result = digits;
-    if (overLength)
-    {
-      result = [1];
-      for (var i = 0; i < digits.length; i++)
-      {
-        result.push(0);
-      }
-    }
-    return result;
+    let result = [1];
+    return result.concat(digits);
   };
   </script>
 
