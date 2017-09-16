@@ -1,0 +1,81 @@
+<html>
+
+<body>
+  <!--
+    Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.
+
+    Note: The input string may contain letters other than the parentheses ( and ).
+
+    Examples:
+    "()())()" -> ["()()()", "(())()"]
+    "(a)())()" -> ["(a)()()", "(a())()"]
+    ")(" -> [""]
+  -->
+  <script>
+  let result = [];
+  /**
+   * @param {string} s
+   * @return {string[]}
+   */
+  var removeInvalidParentheses = function(s) {
+    if(s === "") return s;
+
+    for (var i = 0; i < s.length; i++) {
+      let checkResult = checkValid(s);
+      if(checkResult === 0)
+      {
+        result.push(s);
+        return result;
+      }
+      else if(checkResult < 0)
+      {
+        let leftPIndex = s.substring(i).indexOf("(");
+        let temp = s.split("");
+        temp.splice(leftPIndex,1);
+        s = temp.join("");
+        return removeInvalidParentheses(s);
+      }
+      else if(checkResult > 0)
+      {
+        let rightPIndex = s.substring(i).indexOf(")");
+        let temp = s.split("");
+        temp.splice(rightPIndex,1);
+        s = temp.join("");
+        return removeInvalidParentheses(s);
+      }
+    }
+  };
+
+  function checkValid(s)
+  {
+
+    let leftCount = 0;
+    let rightCount = 0;
+    for (var i = 0; i < s.length; i++) {
+      if (s.charAt(i) === ')')
+      {
+        if(rightCount > 0 && rightCount >= leftCount)
+        {
+          return 1;
+        }
+        else
+        {
+          rightCount++;
+        }
+
+      }
+      if(s.charAt(i) === '(')
+      {
+        leftCount++;
+      }
+    }
+    if(leftCount === rightCount) return 0;
+    return leftCount > rightCount ? -1 : 1;
+  }
+
+  console.log(removeInvalidParentheses("()())()"));
+  </script>
+
+</body>
+
+</html>
