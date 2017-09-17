@@ -1,0 +1,103 @@
+<html>
+
+<body>
+<!--
+
+  Given two binary strings, return their sum (also a binary string).
+
+  For example,
+  a = "11"
+  b = "1"
+  Return "100".
+
+-->
+<script>
+  /**
+   * @param {string} a
+   * @param {string} b
+   * @return {string}
+   */
+   var addBinary = function(a, b) {
+     let num1 = a.length >= b.length ? a : b;
+     let num2 = a.length >= b.length ? b : a;
+     let result = "";
+     let carry = 0;
+     for (var i = 0; i < num2.length; i++) {
+      let ch2 = num2.charAt(num2.length - i - 1);
+      let ch1 = num1.charAt(num1.length - i - 1);
+
+      let countOfOne = ch2 === '1' && ch1 === '1' ? 2 : ch2 === '1' || ch1 === '1' ? 1 : 0;
+      countOfOne += carry;
+
+      if(countOfOne === 0)
+      {
+        carry = 0;
+        result = '0' + result;
+        continue;
+      }
+      else if(countOfOne === 1)
+      {
+        carry = 0;
+        result = '1' + result;
+        continue;
+      }
+      else if(countOfOne === 2)
+      {
+        carry = 1;
+        result = '0' + result
+        continue;
+      }
+      else if(countOfOne === 3)
+      {
+        carry = 1;
+        result = '1' + result;
+        continue;
+      }
+    }
+
+    for (let i = num2.length; i < num1.length; i++) {
+      let ch1 = num1.charAt(num1.length - i - 1);
+      let countOfOne = ch1 === '1' ? 1 : 0;
+      countOfOne += carry;
+
+      if(countOfOne === 0)
+      {
+        carry = 0;
+        result = '0' + result;
+        continue;
+      }
+      else if(countOfOne === 1)
+      {
+        carry = 0;
+        result = '1' + result;
+        continue;
+      }
+      else if(countOfOne === 2)
+      {
+        carry = 1;
+        result = '0' + result
+        continue;
+      }
+      else if(countOfOne === 3)
+      {
+        carry = 1;
+        result = '1' + result;
+        continue;
+      }
+    }
+
+    if(carry!==0)
+    {
+      result = '1' + result;
+    }
+
+    return result;
+  };
+
+  console.log(addBinary("100","110010"))
+</script>
+
+</body>
+
+</html>
+
