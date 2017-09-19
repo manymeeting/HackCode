@@ -1,0 +1,71 @@
+<html>
+
+<body>
+  <!--
+  Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms required.
+
+  For example,
+  Given [[0, 30],[5, 10],[15, 20]],
+  return 2.
+  -->
+  <script>
+  /**
+   * Definition for an interval.
+   * function Interval(start, end) {
+   *     this.start = start;
+   *     this.end = end;
+   * }
+   */
+
+  function Interval(start, end) {
+    this.start = start;
+    this.end = end;
+  }
+  /**
+   * @param {Interval[]} intervals
+   * @return {number}
+   */
+  var minMeetingRooms = function(intervals) {
+    intervals = intervals.sort(function(a,b){
+      return a.start - b.start;
+    });
+
+    let queue = [];
+    for (let i = 0; i < intervals.length; i++)
+    {
+      // get the room that ends first
+      let roomEndsFirst = queue[queue.length-1];
+      if(roomEndsFirst && roomEndsFirst.end <= intervals[i].start)
+      {
+        // no need for a new room, extends the current one
+        roomEndsFirst.end = intervals[i].end;
+        // sort it again
+        queue.sort(function(a,b){
+          return b.end - a.end;
+        });
+      }
+      else
+      {
+        queue.push(intervals[i]);
+        queue.sort(function(a,b){
+          return b.end - a.end;
+        });
+      }
+    }
+
+    return queue.length;
+  };
+
+
+  let test1 = new Interval(1905,4041);
+  let test2 = new Interval(1956,5996);
+  let test3 = new Interval(2610,5351);
+  let test4 = new Interval(2047,2967);
+  let test5 = new Interval(3553,5304);
+  let test6 = new Interval(232,5874);
+  console.log(minMeetingRooms([test1, test2, test3, test4, test5, test6]));
+  </script>
+
+</body>
+
+</html>
