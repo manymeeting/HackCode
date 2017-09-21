@@ -1,0 +1,61 @@
+<html>
+
+<body>
+  <!--
+  Given a digit string, return all possible letter combinations that the number could represent.
+
+  A mapping of digit to letters (just like on the telephone buttons) is given below.
+
+  Input:Digit string "23"
+  Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+  Note:
+  Although the above answer is in lexicographical order, your answer could be in any order you want.
+  -->
+  <script>
+  /**
+   * @param {string} digits
+   * @return {string[]}
+   */
+  let AllLetters = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
+  var letterCombinations = function(digits) {
+    if(digits.length === 0 || digits === null) return[];
+
+    let res = [];
+    return buildRes(digits, 0, res);
+  };
+
+
+  function buildRes(digits, index, res)
+  {
+    if(index === digits.length)
+    {
+      return res;
+    }
+    //232
+    let letters = AllLetters[parseInt(digits.charAt(index))];
+    let currCombination = [];
+    if(res.length === 0)
+    {
+      for (let i = 0; i < letters.length; i++) {
+        currCombination.push(letters[i]);
+      }
+    }
+    else
+    {
+      for (let i = 0; i < letters.length; i++) {
+        for (let j = 0; j < res.length; j++) {
+          currCombination.push(res[j]+letters[i]);
+        }
+      }
+    }
+
+    index++;
+    return buildRes(digits, index, currCombination);
+  }
+
+  console.log(letterCombinations("23"));
+  </script>
+
+</body>
+
+</html>
