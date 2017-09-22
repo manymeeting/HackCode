@@ -1,0 +1,67 @@
+<html>
+
+<body>
+  <!--
+  You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.
+
+  Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad.
+
+  You are given an API bool isBadVersion(version) which will return whether version is bad. Implement a function to find the first bad version. You should minimize the number of calls to the API.
+
+  Credits:
+  Special thanks to @jianchao.li.fighter for adding this problem and creating all test cases.
+  -->
+  <script>
+  /**
+   * Definition for isBadVersion()
+   *
+   * @param {integer} version number
+   * @return {boolean} whether the version is bad
+   * isBadVersion = function(version) {
+   *     ...
+   * };
+   */
+  var isBadVersion = function(version) {
+    return version >= 8 ? true : false;
+  };
+  /**
+   * @param {function} isBadVersion()
+   * @return {function}
+   */
+  var solution = function(isBadVersion) {
+      /**
+       * @param {integer} n Total versions
+       * @return {integer} The first bad version
+       */
+      return function(n) {
+
+        let findFirstBadVersion = function(start, end, min) {
+          if(start === end - 1)
+          {
+            // stop
+            return isBadVersion(start) ? start : min;
+          }
+
+
+          let middleIndex = Math.ceil((start + end)/2);
+          if(isBadVersion(middleIndex))
+          {
+            min = middleIndex < min ? middleIndex : min;
+            return findFirstBadVersion(start ,middleIndex, min);
+          }
+          else
+          {
+            return findFirstBadVersion(middleIndex, end, min);
+          }
+        };
+        return findFirstBadVersion(1, n, n);
+      };
+
+  };
+
+  console.log(solution(isBadVersion)(15));
+  </script>
+
+</body>
+
+</html>
