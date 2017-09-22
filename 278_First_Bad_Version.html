@@ -22,44 +22,60 @@
    * };
    */
   var isBadVersion = function(version) {
-    return version >= 8 ? true : false;
+
   };
   /**
    * @param {function} isBadVersion()
    * @return {function}
    */
+
   var solution = function(isBadVersion) {
-      /**
-       * @param {integer} n Total versions
-       * @return {integer} The first bad version
-       */
-      return function(n) {
-
-        let findFirstBadVersion = function(start, end, min) {
-          if(start === end - 1)
-          {
-            // stop
-            return isBadVersion(start) ? start : min;
-          }
-
-
-          let middleIndex = Math.ceil((start + end)/2);
-          if(isBadVersion(middleIndex))
-          {
-            min = middleIndex < min ? middleIndex : min;
-            return findFirstBadVersion(start ,middleIndex, min);
-          }
-          else
-          {
-            return findFirstBadVersion(middleIndex, end, min);
-          }
-        };
-        return findFirstBadVersion(1, n, n);
-      };
-
+     /**
+      * @param {integer} n Total versions
+      * @return {integer} The first bad version
+      */
+     return function(n) {
+       let start = 1, end = n;
+       while(start < end)
+       {
+         let mid = start + Math.floor((end - start)/2);
+         if(!isBadVersion(mid)) start = mid + 1;
+         else end = mid;
+       }
+       return start;
+     };
   };
-
-  console.log(solution(isBadVersion)(15));
+  // The following solution gives the correct answer but seems fails in LeetCode, probably due to the stack size given.
+  // var solution = function(isBadVersion) {
+  //     /**
+  //      * @param {integer} n Total versions
+  //      * @return {integer} The first bad version
+  //      */
+  //     return function(n) {
+  //
+  //       let findFirstBadVersion = function(start, end, min) {
+  //         if(start === end - 1)
+  //         {
+  //           // stop
+  //           return isBadVersion(start) ? start : min;
+  //         }
+  //
+  //
+  //         let middleIndex = Math.ceil((start + end)/2);
+  //         if(isBadVersion(middleIndex))
+  //         {
+  //           min = middleIndex < min ? middleIndex : min;
+  //           return findFirstBadVersion(start ,middleIndex, min);
+  //         }
+  //         else
+  //         {
+  //           return findFirstBadVersion(middleIndex, end, min);
+  //         }
+  //       };
+  //       return findFirstBadVersion(1, n, n);
+  //     };
+  //
+  // };
   </script>
 
 </body>
