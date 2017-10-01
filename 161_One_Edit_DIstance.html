@@ -1,0 +1,64 @@
+<html>
+
+<body>
+  <!--
+  Given two strings S and T, determine if they are both one edit distance apart.
+  -->
+  <script>
+  /**
+   * @param {string} s
+   * @param {string} t
+   * @return {boolean}
+   */
+  var isOneEditDistance = function(s, t) {
+    
+    if(Math.abs(s.length - t.length) > 1) return false;
+    if(s===t) return false;
+    
+    let len = Math.min(s.length, t.length);
+    let sameLength = s.length === t.length;
+
+    if(len === 0) return sameLength ? false : true;
+    
+    // make s.length < t.length if there's diff in length
+    if(!sameLength && s.length > t.length)
+    {
+      let tmp = s;
+      s = t;
+      t = tmp;
+    }
+    
+    for (let i = 0; i < s.length; i++) {
+      let ch = t.charAt(i);
+      let s0 = s.substring(0, i);
+      let s1 = sameLength ? s.substring(i+1) : s.substring(i);
+      let t0 = t.substring(0, i);
+      let t1 = t.substring(i+1);
+      // same length
+      if(sameLength)
+      {
+        if(s0+ch+s1 === t0+ch+t1)
+        return true;
+      }
+      
+      // one bit less/more
+      else
+      {
+        if(s0 + ch + s1 === t) return true;
+      }
+    }
+    // the diff is at the last/first position
+    if(s === t.substring(0, t.length-1) || t.substring(1) === s)
+    {
+      return true;
+    }
+    
+    return false;
+  };
+  
+  console.log(isOneEditDistance("ab","acb"));
+  </script>
+
+</body>
+
+</html>
