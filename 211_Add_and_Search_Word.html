@@ -1,0 +1,105 @@
+<html>
+
+<body>
+  <!--
+  Design a data structure that supports the following two operations:
+
+  void addWord(word)
+  bool search(word)
+  search(word) can search a literal word or a regular expression string containing only letters a-z or .. A . means it can represent any one letter.
+
+  For example:
+
+  addWord("bad")
+  addWord("dad")
+  addWord("mad")
+  search("pad") -> false
+  search("bad") -> true
+  search(".ad") -> true
+  search("b..") -> true
+  Note:
+  You may assume that all words are consist of lowercase letters a-z.
+  -->
+  <script>
+  /**
+   * Initialize your data structure here.
+   */
+  var WordDictionary = function() {
+    this.root = new TreeNode();
+  };
+  
+  function TreeNode()
+  {
+    this.children = new Array(26);
+    this.isWord = false;
+    this.left = this.right = null;
+  }
+
+  /**
+   * Adds a word into the data structure.
+   * @param {string} word
+   * @return {void}
+   */
+  WordDictionary.prototype.addWord = function(word) {
+    let curr = this.root;
+    for (let i = 0; i < word.length; i++) {
+      let c = word.charAt(i);
+      if(!curr.children[c.charCodeAt(0) - 'a'.charCodeAt(0)])
+      {
+        curr.children[c.charCodeAt(0) - 'a'.charCodeAt(0)] = new TreeNode();
+      }
+      curr = curr.children[c.charCodeAt(0) - 'a'.charCodeAt(0)];
+    }
+    curr.isWord = true;
+  };
+
+  /**
+   * Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter.
+   * @param {string} word
+   * @return {boolean}
+   */
+  WordDictionary.prototype.search = function(word) {
+    return this.searchWitdReg(word.split(""), 0, this.root);
+  };
+
+
+  WordDictionary.prototype.searchWitdReg = function(chs, k, node) {
+    
+    let curr = node;
+    if(curr === undefined) return false;
+    if(k === chs.length)
+    {
+      return curr.isWord ? true : false;
+    }
+    
+    let c = chs[k];
+    if(c === ".")
+    {
+      for (let j = 0; j < 26; j++)
+      {
+        if(this.searchWitdReg(chs, k+1, curr.children[j])) return true;
+      }
+      return false;
+    }
+    else
+    {
+      if(!curr.children[c.charCodeAt(0) - 'a'.charCodeAt(0)]) return false;
+      return this.searchWitdReg(chs, k+1, curr.children[c.charCodeAt(0) - 'a'.charCodeAt(0)]) ;
+    }
+    return false;
+  };
+  /**
+   * Your WordDictionary object will be instantiated and called as such:
+   * var obj = Object.create(WordDictionary).createNew()
+   * obj.addWord(word)
+   * var param_2 = obj.search(word)
+   */
+   
+   let test = new WordDictionary();
+   test.addWord("bad");
+   console.log(test.search("bad"));
+  </script>
+
+</body>
+
+</html>
