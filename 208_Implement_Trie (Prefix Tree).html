@@ -1,0 +1,98 @@
+<html>
+
+<body>
+  <!--
+  Implement a trie with insert, search, and startsWith methods.
+
+  Note:
+  You may assume that all inputs are consist of lowercase letters a-z.
+  -->
+  <script>
+  /**
+   * Initialize your data structure here.
+   */
+   
+   
+  function TreeNode(val)
+  {
+    this.children = new Array(26);
+    
+    this.isWord = false;
+    this.val = val;
+    this.left = this.right = null;
+  }
+  
+  
+  var Trie = function() {
+    this.root = new TreeNode("");
+  };
+
+  /**
+   * Inserts a word into the trie.
+   * @param {string} word
+   * @return {void}
+   */
+  Trie.prototype.insert = function(word) {
+    let curr = this.root;
+    for (let i = 0; i < word.length; i++) {
+      let c = word.charAt(i);
+      if(!curr.children[c.charCodeAt(0) - 'a'.charCodeAt(0)])
+      {
+        curr.children[c.charCodeAt(0) - 'a'.charCodeAt(0)] = new TreeNode(c);
+      }
+      curr = curr.children[c.charCodeAt(0) - 'a'.charCodeAt(0)];
+    }
+    curr.isWord = true;
+  };
+
+  /**
+   * Returns if the word is in the trie.
+   * @param {string} word
+   * @return {boolean}
+   */
+  Trie.prototype.search = function(word) {
+    let curr = this.root;
+    for (let i = 0; i < word.length; i++) {
+      let c = word.charAt(i);
+      if(!curr.children[c.charCodeAt(0) - 'a'.charCodeAt(0)]) return false;
+      
+      curr = curr.children[c.charCodeAt(0) - 'a'.charCodeAt(0)];
+    }
+    return curr.isWord ? true : false;
+  };
+
+  /**
+   * Returns if there is any word in the trie that starts with the given prefix.
+   * @param {string} prefix
+   * @return {boolean}
+   */
+  Trie.prototype.startsWith = function(prefix) {
+    let curr = this.root;
+    for (let i = 0; i < prefix.length; i++) {
+      let c = prefix.charAt(i);
+      if(!curr.children[c.charCodeAt(0) - 'a'.charCodeAt(0)]) return false;
+      
+      curr = curr.children[c.charCodeAt(0) - 'a'.charCodeAt(0)];
+    }
+    return true;
+  };
+
+  /**
+   * Your Trie object will be instantiated and called as such:
+   * var obj = Object.create(Trie).createNew()
+   * obj.insert(word)
+   * var param_2 = obj.search(word)
+   * var param_3 = obj.startsWith(prefix)
+   */
+   
+   let arr = new Array(5);
+   arr[2] = 'a';
+   arr['d'.charCodeAt(0) - 'a'.charCodeAt(0)] = 'b';
+   for (let i = 0; i < arr.length; i++) {
+     console.log(arr[i]);
+   }
+  </script>
+
+</body>
+
+</html>
