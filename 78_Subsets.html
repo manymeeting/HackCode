@@ -1,0 +1,54 @@
+<html>
+
+<body>
+  <!--
+  
+  Given a set of distinct integers, nums, return all possible subsets.
+
+  Note: The solution set must not contain duplicate subsets.
+
+  For example,
+  If nums = [1,2,3], a solution is:
+
+  [
+    [3],
+    [1],
+    [2],
+    [1,2,3],
+    [1,3],
+    [2,3],
+    [1,2],
+    []
+  ]
+  -->
+  <script>
+  /**
+   * @param {number[]} nums
+   * @return {number[][]}
+   */
+  var subsets = function(nums) {
+    let res = [];
+    res.push([]);
+    
+    nums.sort(function(a, b){
+      return a - b;
+    });
+    
+    for (let i = 0; i < nums.length; i++)
+    {
+      let tmp = [];
+      for (let j = 0; j < res.length; j++)
+      {
+        let a = res[j].slice();
+        a.push(nums[i]);
+        tmp.push(a);
+      }
+      res = res.concat(tmp);
+    }
+    return res;
+  };
+  </script>
+
+</body>
+
+</html>
