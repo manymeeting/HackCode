@@ -1,0 +1,44 @@
+<html>
+
+<body>
+  <!--
+  Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+
+  You may assume that the array is non-empty and the majority element always exist in the array.
+  -->
+  <script>
+  /**
+   * @param {number[]} nums
+   * @return {number}
+   */
+  var majorityElement = function(nums) {
+    if(nums.length === 1)
+    {
+      return nums[0];
+    }
+
+    let occurences = new Map();
+    for (var i = 0; i < nums.length; i++) {
+      let occur = occurences.get(nums[i]);
+
+      if(!occur)
+      {
+        occurences.set(nums[i], 1);
+      }
+      else
+      {
+        occurences.set(nums[i], occur+1);
+        if(occur + 1 > Math.floor(nums.length / 2))
+        {
+          return nums[i];
+        }
+      }
+    }
+  };
+
+  console.log(majorityElement([2,2]));
+  </script>
+
+</body>
+
+</html>
