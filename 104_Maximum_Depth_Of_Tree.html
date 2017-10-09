@@ -1,0 +1,52 @@
+<html>
+
+<body>
+  <!--
+  Given a binary tree, find its maximum depth.
+
+  The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+  -->
+  <script>
+  /**
+   * Definition for a binary tree node.
+   * function TreeNode(val) {
+   *     this.val = val;
+   *     this.left = this.right = null;
+   * }
+   */
+  /**
+   * @param {TreeNode} root
+   * @return {number}
+   */
+  var maxDepth = function(root) {
+    if(root === null)
+    {
+      return 0;
+    }
+    else
+    {
+      let maxRight, maxLeft;
+      if(root.left === null)
+      {
+        maxRight = 1 + maxDepth(root.right);
+        return maxRight;
+      }
+      if(root.right === null)
+      {
+        maxLeft = 1 + maxDepth(root.left);
+        return maxLeft;
+      }
+      else
+      {
+        maxRight = 1 + maxDepth(root.right);
+        maxLeft = 1 + maxDepth(root.left);
+        return Math.max(maxRight, maxLeft);
+      }
+    }
+
+  };
+  </script>
+
+</body>
+
+</html>
