@@ -1,0 +1,34 @@
+<html>
+
+<body>
+  <!--
+  You are climbing a stair case. It takes n steps to reach to the top.
+
+  Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+  Note: Given n will be a positive integer.
+  -->
+  <script>
+  /**
+   * @param {number} n
+   * @return {number}
+   */
+  var climbStairs = function(n) {
+    let map = new Map();
+    return getWaysCount(n, map);
+  };
+  
+  function getWaysCount(n, map)
+  {
+    if(n <== 1) return 1;
+    let countA = map.has(n-1) ? map.get(n-1) : getWaysCount(n - 1, map);
+    map.set(n-1, countA);
+    let countB = map.has(n-2) ? map.get(n-2) : getWaysCount(n - 2, map);
+    map.set(n-2, countB);
+    return countA + countB;
+  }
+  </script>
+
+</body>
+
+</html>
