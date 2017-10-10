@@ -1,0 +1,52 @@
+<html>
+
+<body>
+  <!--
+  Given a non-negative integer, you could swap two digits at most once to get the maximum valued number. Return the maximum valued number you could get.
+
+  Example 1:
+  Input: 2736
+  Output: 7236
+  Explanation: Swap the number 2 and the number 7.
+  Example 2:
+  Input: 9973
+  Output: 9973
+  Explanation: No swap.
+  Note:
+  The given number is in the range [0, 10^8]
+  -->
+  <script>
+  /**
+   * @param {number} num
+   * @return {number}
+   */
+  var maximumSwap = function(num) {
+    let buckets = new Array(10).fill(0);
+    let numStr = num + "";
+    for (let i = 0; i < numStr.length; i++) {
+      let currDigit = parseInt(numStr.charAt(i));
+      buckets[currDigit] = i;
+    }
+    
+    for (let i = 0; i < numStr.length; i++) {
+      let currDigit = parseInt(numStr.charAt(i));
+      for (let j = 9; j >= 0; j--) {
+        if(j > currDigit && buckets[j] > i)
+        {
+          //swap
+          let from = buckets[j];
+          let to = i
+          let res = numStr.substring(0, to) + j + numStr.substring(to + 1, from) + currDigit + numStr.substring(from + 1);
+          return  parseInt(res);
+        }
+      }
+    }
+    return  num;
+  };
+  
+  console.log(maximumSwap(2736));
+  </script>
+
+</body>
+
+</html>
