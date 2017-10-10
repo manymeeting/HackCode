@@ -1,0 +1,47 @@
+<html>
+
+<body>
+  <!--
+  Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2.
+
+  Note:
+
+  The length of both num1 and num2 is < 110.
+  Both num1 and num2 contains only digits 0-9.
+  Both num1 and num2 does not contain any leading zero.
+  You must not use any built-in BigInteger library or convert the inputs to integer directly.
+  
+  -->
+  <script>
+  //https://leetcode.com/problems/multiply-strings/discuss/
+  /**
+   * @param {string} num1
+   * @param {string} num2
+   * @return {string}
+   */
+  var multiply = function(num1, num2) {
+      let m = num1.length;
+      let n = num2.length;
+      let pos = new Array(m+n).fill(0);
+      for (let i = m-1; i >=0; i--) {
+      
+          for (let j = n - 1; j >= 0; j--) {
+            let mul = parseInt(num1[i]) * parseInt(num2[j]);
+            
+            let sum = mul + pos[i+j+1];
+            //update pos
+            pos[i+j] += Math.floor(sum / 10);
+            pos[i+j+1] = sum % 10;
+          }
+      }
+      let res = "";
+      for (var i = 0; i < pos.length; i++) {
+        if(!(res.length === 0 && pos[i] === 0)) res += (pos[i]+"");
+      }
+      return res.length === 0 ? "0" : res;
+  };
+  </script>
+
+</body>
+
+</html>
