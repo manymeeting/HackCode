@@ -27,32 +27,27 @@
     
     if(nums === null || nums.length < 1 || k <= 0) return 0;
          
-    let start, end = 1;
+    let start = 1, end = 1;
     for (let i = 0; i < nums.length; i++) {
       end = Math.max(end, nums[i]);
     }
     
-    while(start + 1 < end)
+    while(start <= end)
     {
       let mid = start + Math.floor((end - start) / 2);
       if(getPiecesCount(nums, mid) >= k)
       {
-        start = mid;
+        start = mid + 1;
       }
       else
       {
-        end = mid;
+        end = mid - 1;
       }
     }
     
-    if(getPiecesCount(nums, end) >= k)
-    {
-      return end;
-    }
-    if(getPiecesCount(nums, start) >= k)
-    {
-      return start;
-    }
+    // confirm
+    if(getPiecesCount(nums, start) >= k) return start;
+    if(getPiecesCount(nums, end) >= k) return end;
     
     return 0;
     
@@ -68,6 +63,8 @@
     return cnt;
     
   }
+  
+  console.log(woodCut([232, 124, 456], 7));
   </script>
 
 </body>
