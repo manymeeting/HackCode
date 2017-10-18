@@ -1,0 +1,36 @@
+<html>
+
+<body>
+  <!--
+  Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.
+
+  Example:
+  Given a = 1 and b = 2, return 3.
+
+  Credits:
+  Special thanks to @fujiaozhu for adding this problem and creating all test cases.
+  -->
+  <script>
+  /**
+   * @param {number} a
+   * @param {number} b
+   * @return {number}
+   */
+  var getSum = function(a, b) {
+    let result, carry, temp;
+    result = a ^ b;
+    carry = (a & b) << 1;
+    while (carry !== 0) {
+      add = result ^ carry;
+      carry = (result & carry) << 1;
+      result = add;
+    }
+    return result;
+  };
+
+  console.log(getSum(2, 3));
+  </script>
+
+</body>
+
+</html>
