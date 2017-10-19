@@ -16,44 +16,72 @@
    * @param {string} digits
    * @return {string[]}
    */
-  let AllLetters = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
-  var letterCombinations = function(digits) {
-    if(digits.length === 0 || digits === null) return[];
+  function letterCombinations(digits)
+  {
 
     let res = [];
-    return buildRes(digits, 0, res);
-  };
-
-
-  function buildRes(digits, index, res)
-  {
-    if(index === digits.length)
-    {
-      return res;
-    }
-    //232
-    let letters = AllLetters[parseInt(digits.charAt(index))];
-    let currCombination = [];
-    if(res.length === 0)
-    {
-      for (let i = 0; i < letters.length; i++) {
-        currCombination.push(letters[i]);
+    let mapping = ["0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
+    
+    res.push("");
+    
+    for(let i = 0; i < digits.length; i++) {
+      let x = parseInt(digits.charAt(i));
+      while(res[0].length === i)
+      {
+        let curr = res.shift();
+        mapping[x].split("").map(function(c) {
+          res.push(curr + c);
+        });
       }
+      
     }
-    else
-    {
-      for (let i = 0; i < letters.length; i++) {
-        for (let j = 0; j < res.length; j++) {
-          currCombination.push(res[j]+letters[i]);
-        }
-      }
-    }
-
-    index++;
-    return buildRes(digits, index, currCombination);
+    
+    return res;
   }
-
   console.log(letterCombinations("23"));
+  
+  /**
+   * @param {string} digits
+   * @return {string[]}
+   */
+  // let AllLetters = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
+  // var letterCombinations = function(digits) {
+  //   if(digits.length === 0 || digits === null) return[];
+  //
+  //   let res = [];
+  //   return buildRes(digits, 0, res);
+  // };
+  //
+  //
+  // function buildRes(digits, index, res)
+  // {
+  //   if(index === digits.length)
+  //   {
+  //     return res;
+  //   }
+  //   //232
+  //   let letters = AllLetters[parseInt(digits.charAt(index))];
+  //   let currCombination = [];
+  //   if(res.length === 0)
+  //   {
+  //     for (let i = 0; i < letters.length; i++) {
+  //       currCombination.push(letters[i]);
+  //     }
+  //   }
+  //   else
+  //   {
+  //     for (let i = 0; i < letters.length; i++) {
+  //       for (let j = 0; j < res.length; j++) {
+  //         currCombination.push(res[j]+letters[i]);
+  //       }
+  //     }
+  //   }
+  //
+  //   index++;
+  //   return buildRes(digits, index, currCombination);
+  // }
+  //
+  // console.log(letterCombinations("23"));
   </script>
 
 </body>
