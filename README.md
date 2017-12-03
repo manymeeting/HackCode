@@ -1,2 +1,2 @@
 # LeetCode_in_JS
-JavaScript solution of LeetCode problems
+Java & JavaScript solution of LeetCode problems
