@@ -1,2 +1,2 @@
-# LeetCode_in_JS
-Java & JavaScript solution of LeetCode problems
+# Introduction
+HackCode is a repository that contains the solution of LeetCode problems written in Java or JavaScript.
