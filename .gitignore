@@ -4,3 +4,6 @@
 #intelliJ
 .idea/
 *.iml
+
+#Java
+*.class
