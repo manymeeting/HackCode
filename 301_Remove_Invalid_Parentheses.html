@@ -12,20 +12,20 @@
     ")(" -> [""]
   -->
   <script>
-  let result = [];
+  let result = [""];
   /**
    * @param {string} s
    * @return {string[]}
    */
   var removeInvalidParentheses = function(s) {
-    if(s === "") return s;
+    if(s === "") return;
 
     for (var i = 0; i < s.length; i++) {
       let checkResult = checkValid(s);
       if(checkResult === 0)
       {
-        result.push(s);
-        return result;
+        if(s!=="") result = [];
+        if(result.indexOf(s) < 0) result.push(s);
       }
       else if(checkResult < 0)
       {
@@ -44,6 +44,7 @@
         return removeInvalidParentheses(s);
       }
     }
+    return result;
   };
 
   function checkValid(s)

@@ -1,0 +1,94 @@
+<html>
+
+<body>
+  <!--
+
+  Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+
+  -->
+  <script>
+  /**
+   * Definition for singly-linked list.
+   * function ListNode(val) {
+   *     this.val = val;
+   *     this.next = null;
+   * }
+   */
+
+  /**
+   * @param {ListNode} l1
+   * @param {ListNode} l2
+   * @return {ListNode}
+   */
+  var mergeTwoLists = function(l1, l2) {
+    let node1 = l1;
+    let node2 = l2;
+    if (node1 === null && node2 === null) {
+      return null;
+    }
+    else if(node1 === null)
+    {
+      return node2;
+    }
+    else if(node2 === null)
+    {
+      return node1;
+    }
+
+    let result = null;
+    let currNode = null;
+    while (node1 !== null || node2 !== null) {
+      if (node1 === null)
+      {
+        currNode.next = node2;
+        break;
+      }
+      else if(node2 === null)
+      {
+        currNode.next = node1;
+        break;
+      }
+
+      let currVal = node1.val < node2.val ? node1.val : node2.val;
+      let newNode = new ListNode(currVal);
+      if(result === null)
+      {
+        result = newNode;
+        currNode = newNode;
+      }
+      else
+      {
+        currNode.next = newNode;
+        currNode = newNode;
+      }
+
+      if(currVal === node1.val)
+      {
+        node1 = node1.next;
+      }
+      else
+      {
+        node2 = node2.next;
+      }
+    }
+
+    // format for leetcode test case
+    let resultArr = [];
+    while(result !== null)
+    {
+      resultArr.push(result.val);
+      result = result.next;
+    }
+    return resultArr;
+  };
+
+  function ListNode(val) {
+      this.val = val;
+      this.next = null;
+  }
+
+  </script>
+
+</body>
+
+</html>

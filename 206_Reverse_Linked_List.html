@@ -1,0 +1,55 @@
+<html>
+
+<body>
+  <!--
+  Reverse a singly linked list.
+  -->
+  <script>
+  /**
+   * Definition for singly-linked list.
+   * function ListNode(val) {
+   *     this.val = val;
+   *     this.next = null;
+   * }
+   */
+  /**
+   * @param {ListNode} head
+   * @return {ListNode}
+   */
+  function ListNode(val) {
+    this.val = val;
+    this.next = null;
+  }
+
+  var reverseList = function(head) {
+    if(!head) return null;
+    let vals = [];
+    let node = head;
+    while(node !== null)
+    {
+      vals.push(node.val);
+      node = node.next;
+    }
+
+    let newHead = new ListNode(vals[0]);
+    let newNode = newHead;
+    for (let i = 1; i < vals.length; i++) {
+      let nextNode = new ListNode(vals[i]);
+      newNode.next = nextNode;
+      newNode = nextNode;
+    }
+
+    // return newHead;
+
+    // convert object to array to pass test cases on leetcode
+    let resultArr = [];
+    for (let i = vals.length - 1; i >= 0; i--) {
+      resultArr.push(vals[i]);
+    }
+    return resultArr;
+  };
+  </script>
+
+</body>
+
+</html>

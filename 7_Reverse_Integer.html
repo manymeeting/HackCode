@@ -1,0 +1,43 @@
+<html>
+
+<body>
+  <!--
+  Reverse digits of an integer.
+
+  Example1: x = 123, return 321
+  Example2: x = -123, return -321
+
+  click to show spoilers.
+
+  Note:
+  The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.
+
+  -->
+  <script>
+  /**
+   * @param {number} x
+   * @return {number}
+   */
+  var reverse = function(x) {
+    if(x === 0) return x;
+
+    let rev = 0;
+    while(x !== 0)
+    {
+      rev = rev * 10 + x % 10;
+      x = x > 0 ? Math.floor(x / 10) : Math.ceil(x / 10);
+    }
+
+    if(rev >= Math.pow(2,31) || rev <= (0 - Math.pow(2,31)))
+    {
+      return 0;
+    }
+    return rev;
+  };
+
+  console.log(reverse(1563847412));
+  </script>
+
+</body>
+
+</html>
