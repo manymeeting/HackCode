@@ -15,7 +15,7 @@ public class RepeatedStringMatch686 {
         int lenB = B.length();
 
         // when lenA > lenB, consider A=123121, B=11
-        int maxRepeat = lenA >= lenB ? 1 : lenB / lenA;
+        int maxRepeat = lenA >= lenB ? 1 : (lenB / lenA + 1);
 
         StringBuilder repeatA = new StringBuilder();
         for (int i = 0; i <= maxRepeat; i++)
