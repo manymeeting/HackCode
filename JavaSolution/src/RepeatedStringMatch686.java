@@ -14,22 +14,14 @@ public class RepeatedStringMatch686 {
         int lenA = A.length();
         int lenB = B.length();
 
-        int maxRepeat;
-        
-        if(lenA >= lenB) // A=123121, B=11
-        {
-            maxRepeat = 1;
-        }
-        else
-        {
-            maxRepeat = lenB / lenA;
-        }
+        // when lenA > lenB, consider A=123121, B=11
+        int maxRepeat = lenA >= lenB ? 1 : lenB / lenA;
 
-        String repeatA = "";
+        StringBuilder repeatA = new StringBuilder();
         for (int i = 0; i <= maxRepeat; i++)
         {
-            repeatA += A;
-            if(repeatA.contains(B))
+            repeatA.append(A);
+            if(repeatA.toString().contains(B))
             {
                 return i+1;
             }
