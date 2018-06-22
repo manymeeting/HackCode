@@ -11,7 +11,7 @@
  The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
  */
 
-import java.util.Arrays;/
+import java.util.Arrays;
 public class ThreeSumCloset16 {
    public int twoPointersSolution(int[] nums, int target) {
 
