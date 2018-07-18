@@ -1,3 +1,5 @@
+package arrays;
+
 public class SearchInsertPosition35 {
     public int searchInsert(int[] nums, int target) {
         for(int i = 0; i < nums.length; i++)
