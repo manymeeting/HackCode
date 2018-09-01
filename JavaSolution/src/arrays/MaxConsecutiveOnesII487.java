@@ -22,7 +22,7 @@ import java.util.Queue;
  */
 
 // 维护一个滑动窗口，[l, h] that contains at most maxFlipNumber zero
-
+// 通过queue来存储值为0的index，这样就不用访问之前的input stream，可以处理大数据流的情况
 public class MaxConsecutiveOnesII487 {
     public int findMaxConsecutiveOnes(int[] nums) {
 
