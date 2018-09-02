@@ -28,7 +28,7 @@ import java.util.*;
 
 // 先构造freq map，再用PriorityQueue来排列map里的entry，保持queue大小为k，最后从queue里拿出元素放到res里即可，
 // 注意PriorityQueue在new时的定义（lamba）
-    
+
 public class TopKFrequentWords692 {
     public List<String> topKFrequent(String[] words, int k) {
         HashMap<String, Integer> freq = new HashMap<>();
