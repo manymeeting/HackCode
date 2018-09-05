@@ -26,7 +26,8 @@ package datastruct;
 
  */
 
-// very tricky:不check各自的长度，到达末尾后切换指针到另一个head，可以起到同步的效果（最多2个loop就能找到）
+// trick:不check各自的长度，到达末尾后切换指针到另一个head，可以起到同步的效果（最多2个loop就能找到），
+// 原理：相当于两个path各走一个diff+common长度
 
 public class IntersectionofTwoLinkedLists160 {
     public class ListNode {
