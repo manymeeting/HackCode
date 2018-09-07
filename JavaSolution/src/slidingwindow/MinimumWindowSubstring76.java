@@ -1,4 +1,4 @@
-package strings;
+package slidingwindow;
 
 /**
  * Given a string S and a string T, find the minimum window in S which will contain
