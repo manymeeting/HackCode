@@ -11,6 +11,8 @@ package math;
  Both num1 and num2 does not contain any leading zero.
  You must not use any built-in BigInteger library or convert the inputs to integer directly.
  */
+
+// 用num[i] - '0' 来转化char为数字，注意要在StringBuilder的head处插入，用sb.insert(0, str)
 public class AddStrings415 {
     public String addStrings(String num1, String num2) {
 
