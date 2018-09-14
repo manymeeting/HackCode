@@ -35,7 +35,7 @@ public class UniquePaths62 {
         int[][] matrix = new int[m][n];
         for (int i = 0;i < m; i++)
         {
-            matrix[][0] = 1;
+            matrix[i][0] = 1;
         }
         for (int j = 0; j < n; j++)
         {
@@ -50,5 +50,5 @@ public class UniquePaths62 {
         }
 
         return matrix[m-1][n-1];
-    }i
+    }
 }
