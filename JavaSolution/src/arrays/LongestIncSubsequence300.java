@@ -20,7 +20,7 @@ import java.util.List;
  * */
 
 // 思路：只要求返回目标seq的长度，没必要保证内容一定一致，所以维护一个有序的list，
-// 每次大的数字加到末尾，小的数字用二分查找定位index最小且>=该数字的位置，用set覆盖对应数字，不影响seq的length
+// 每次大的数字加到末尾，小的数字用二分查找定位index最小且>=该数字的位置，用list.set覆盖对应数字，不影响seq的length
 
 public class LongestIncSubsequence300 {
     public int lengthOfLIS(int[] nums) {
@@ -42,12 +42,12 @@ public class LongestIncSubsequence300 {
         }
         else
         {
-            int insertIndex = binarySearchForEqaulOrLarge(val, seq);
+            int insertIndex = binarySearchForEqualOrLarge(val, seq);
             seq.set(insertIndex, val);
         }
     }
 
-    private int binarySearchForEqaulOrLarge(int target, List<Integer> seq)
+    private int binarySearchForEqualOrLarge(int target, List<Integer> seq)
     {
         int lo = 0, hi = seq.size()-1;
         while(lo < hi)
@@ -64,8 +64,6 @@ public class LongestIncSubsequence300 {
         }
         return lo;
     }
-
-
 
 
 }
