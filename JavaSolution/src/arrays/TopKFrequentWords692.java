@@ -27,7 +27,9 @@ import java.util.*;
  */
 
 // 先构造freq map，再用PriorityQueue来排列map里的entry，保持queue大小为k，最后从queue里拿出元素放到res里即可，
-// 注意PriorityQueue在new时的定义（lamba）
+// 注意PriorityQueue在new时的定义（lamba），
+// 还要注意当queue达到指定大小k的时候要开始从顶端poll元素（一开始要按照出现频率从小到大的顺序排列），
+// 最后加入res的时候要从头部insert
 
 public class TopKFrequentWords692 {
     public List<String> topKFrequent(String[] words, int k) {
