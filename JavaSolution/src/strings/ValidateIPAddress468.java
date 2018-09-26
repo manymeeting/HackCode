@@ -37,7 +37,11 @@ package strings;
  */
 
 
-//注意各种String类型api的使用
+//注意各种String类型api的使用，
+//正则写法：其他语言中，\\ 表示：我想要在正则表达式中插入一个普通的（字面上的）反斜杠，请不要给它任何特殊的意义。
+//在 Java 中，\\ 表示：插入一个正则表达式的反斜线，所以其后的字符具有特殊的意义。
+//所以，在其他的语言中（如Perl），一个反斜杠 \ 就足以具有转义的作用，而在 Java 中正则表达式中则需要有两个反斜杠才能被解析为其他语言中的转义作用。
+
 public class ValidateIPAddress468 {
     public String validIPAddress(String IP) {
         if(isValidIPv4(IP)) return "IPv4";
@@ -49,7 +53,7 @@ public class ValidateIPAddress468 {
     {
         if(IP.length() < 7) return false;
         if(IP.charAt(0) == '.' || IP.charAt(IP.length()-1) == '.') return false;
-        String[] tokens = IP.split("\\."); // 两次转义，先转义. 再转义\
+        String[] tokens = IP.split("\\."); // java中两个\\相当于标准正则的一个\
         if(tokens.length!=4) return false;
         for(String token: tokens)
         {
