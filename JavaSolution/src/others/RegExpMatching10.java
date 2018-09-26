@@ -61,7 +61,8 @@ package others;
 // 递归思路相对更直观
 public class RegExpMatching10 {
 
-    // 递归解法
+    // 递归解法（复杂度2^n, 因为，
+    // 假设P全是a*a*a*这样组成，s = aaaaaaaa 而s的每一个字符都有2种可能：与当前的a*匹配,或者与下一个a*匹配）
     public boolean isMatch(String s, String p) {
         if (p.length() == 0) {
             return s.length() == 0;
