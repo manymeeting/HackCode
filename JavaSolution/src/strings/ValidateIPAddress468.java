@@ -49,7 +49,7 @@ public class ValidateIPAddress468 {
     {
         if(IP.length() < 7) return false;
         if(IP.charAt(0) == '.' || IP.charAt(IP.length()-1) == '.') return false;
-        String[] tokens = IP.split("\\.");
+        String[] tokens = IP.split("\\."); // 两次转义，先转义. 再转义\
         if(tokens.length!=4) return false;
         for(String token: tokens)
         {
