@@ -14,7 +14,9 @@ package arrays;
 
  */
 
-// 2pointer，while循环遍历，可以想象成两个pointer是容器的两个边，每次按短边一侧的max来计算容量
+// 2pointer，while循环遍历，可以想象成两个pointer是容器的两个边，每次按短边一侧的max来计算容量，
+// followup：如果有漏水的位置
+
 public class TrappingRainWater42 {
     public int trap(int[] height) {
         int a = 0;
