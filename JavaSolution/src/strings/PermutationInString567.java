@@ -47,6 +47,7 @@ public class PermutationInString567 {
             chArr2[s2.charAt(j) - 'a']++;
             if(j >= len1)
             {
+                // 窗口开始往右移动，要把左边的减掉
                 chArr2[s2.charAt(j-len1) - 'a']--;
             }
             if(Arrays.equals(chArr1, chArr2))
