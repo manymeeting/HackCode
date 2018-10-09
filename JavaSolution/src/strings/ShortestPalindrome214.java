@@ -14,18 +14,30 @@ package strings;
 
  */
 
-// 解释：注意for循环，i会走完一直到0，所以j至少会+1，
-// 然后s.substring(0, j)会包括目前最长的回文，所以对这一部分进行递归，得到中间这部分最短的回文，
-// 最后再加上reverse过的后半部分和后半部分，就得到目标结果
+// 解释：基本上采用暴力解法，i和j从两边开始对比ch，再维护一个end位置，从末尾开始，遇到不一样的就向前挪一位，
+// 最后end的位置就是当前str中包含的最大的回文末尾（因为只能在前面加，所以这个回文一定是从0位置开始），
+// 然后把后面部分reverse一下加到前面即可
 
 public class ShortestPalindrome214 {
     public String shortestPalindrome(String s) {
-        int j = 0;
-        for (int i = s.length() - 1; i >= 0; i--) {
-            if (s.charAt(i) == s.charAt(j)) { j += 1; }
+        int i = 0;
+        int end = s.toCharArray().length - 1;
+
+        // end is the end index of the longest existing palindrome.
+        int j = end;
+
+        while (i < j) {
+            if (s.charAt(i) == s.charAt(j)) {
+                i ++;
+                j --;
+            } else {
+                i = 0;
+                end --;
+                j = end;
+            }
         }
-        if (j == s.length()) { return s; }
-        String suffix = s.substring(j);
-        return new StringBuffer(suffix).reverse().toString() + shortestPalindrome(s.substring(0, j)) + suffix;
+        StringBuilder temp = new StringBuilder(s.substring(end + 1));
+        String res = temp.reverse().toString() + s;
+        return res;
     }
 }
