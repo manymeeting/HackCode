@@ -23,7 +23,8 @@ import java.util.*;
  */
 
 
-// 用BFS，维护一个visited的set和一个queue，每次遇到左右括号就删一个，把删后的string放到queue里，每次while循环中判断是否valid，
+// 用BFS，维护一个visited的set和一个queue，
+// 每次遇到左右括号就删一个，把删后的string放到queue里，每次while循环中判断是否valid，
 // 注意一旦遇到valid的结果，就不再继续删，保证所得结果中只包含删除数量最小的
 
 public class RemoveInvalidParentheses301 {
@@ -49,13 +50,13 @@ public class RemoveInvalidParentheses301 {
                 res.add(s);
             }
 
-            if(isFound) continue;
+            if(isFound) continue; // 不在前面continue是为了让删除数量都是最小的结果都被加到res里
 
             for (int i = 0; i < s.length(); i++) {
                 // 不是括号则跳过
                 if (s.charAt(i) != '(' && s.charAt(i) != ')') continue;
 
-                String t = s.substring(0, i) + s.substring(i + 1);
+                String t = s.substring(0, i) + s.substring(i + 1); // t为删除当前括号字符以后的str
                 if(!visited.contains(t)) { // 避免重复
                     queue.add(t);
                     visited.add(t);
