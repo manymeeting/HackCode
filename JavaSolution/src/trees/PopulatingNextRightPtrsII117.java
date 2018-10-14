@@ -36,7 +36,7 @@ package trees;
  */
 
 // 用一个dummy节点来保存每一层最左端的引用，实现level order遍历，
-// 注意和116不同之处在于，此处tree不保证是complete的
+// 此解法可以直接用于116
 
 public class PopulatingNextRightPtrsII117 {
     public class TreeLinkNode {

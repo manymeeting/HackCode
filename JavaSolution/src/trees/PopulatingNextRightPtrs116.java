@@ -40,8 +40,8 @@ import java.util.Queue;
 
  */
 
-// bfs遍历，每个node连接到queue里peek出来的，
-// 技巧：根据题意，可以通过每层后都加一个null节点（包括root层），保证每层最后一个指向null
+// 需要O（1）空间：可以直接用117的解法
+// 如果不考虑需要O（1）空间，如下，可以bfs遍历，每个node连接到queue里peek出来的，技巧：根据题意，可以通过每层后都加一个null节点（包括root层），保证每层最后一个指向null
 public class PopulatingNextRightPtrs116 {
     public class TreeLinkNode {
         int val;
