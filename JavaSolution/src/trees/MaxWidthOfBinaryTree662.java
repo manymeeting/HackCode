@@ -92,8 +92,11 @@ public class MaxWidthOfBinaryTree662 {
             // 每次遍历一层
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
+                // 记录该层start和end
                 if(i == 0) start = map.get(node);
                 if(i == size-1) end = map.get(node);
+
+                // 把下一层的所有node的序号放到map里
                 if(node.left != null) {
                     map.put(node.left, map.get(node) * 2);
                     queue.offer(node.left);
@@ -103,8 +106,8 @@ public class MaxWidthOfBinaryTree662 {
                     queue.offer(node.right);
                 }
             }
+            currWidth = end - start + 1;
 
-             currWidth = end - start + 1;
             maxWidth = Math.max(currWidth, maxWidth);
         }
 

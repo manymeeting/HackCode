@@ -36,18 +36,18 @@ public class TopKFrequentElements347 {
         }
 
         // 2. build buckets on freq
-        List<Integer>[] buckets = new List[nums.length+1];
-        for (int i = 0; i < buckets.length; i++) buckets[i] = new ArrayList<>();
+        List<List<Integer>> buckets = new ArrayList<>();
+        for (int i = 0; i < nums.length + 1; i++) buckets.add(new ArrayList<>());
         for (int key: freq.keySet())
         {
-            buckets[freq.get(key)].add(key);
+            buckets.get(freq.get(key)).add(key);
         }
 
         // 3. gather results
         List<Integer> res = new ArrayList<>();
-        for (int i = buckets.length - 1; i >= 0; i--)
+        for (int i = buckets.size()-1; i >= 0; i--)
         {
-            res.addAll(buckets[i]);
+            res.addAll(buckets.get(i));
             if(res.size() >= k) return res;
         }
 
