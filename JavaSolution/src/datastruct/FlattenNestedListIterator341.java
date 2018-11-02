@@ -24,7 +24,9 @@ import java.util.List;
 
  */
 
-// 用stack（Dequeue）来处理，在hasNext里unpack尾端的元素，如果一直unpack到int则返回true，否则hasNext返回false
+// 用stack（Dequeue）来存放list元素，
+// 每次在hasNext里unpack尾端的元素，遇到list就一直unpack到int（倒序遍历list，往stack里加）同时返回true，
+// 如果stack已空返回false
     
 public class FlattenNestedListIterator341 implements Iterator<Integer> {
     public interface NestedInteger {

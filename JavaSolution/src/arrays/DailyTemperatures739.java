@@ -15,7 +15,7 @@ import java.util.Deque;
  */
 
 
-// 用stack存之之前一个较低温度的index，遇到更高的温度就用while从stack里往出pop，直到栈顶对应温度<=当前温度
+// 用stack存之前一个较低温度的index，遇到更高的温度就用while从stack里往出pop，直到栈顶index对应的温度<=当前温度，同时构造结果数组
 
 public class DailyTemperatures739 {
 

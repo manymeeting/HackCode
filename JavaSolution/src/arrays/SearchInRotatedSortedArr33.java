@@ -30,7 +30,7 @@ public class SearchInRotatedSortedArr33 {
         if(nums.length == 0) return -1;
         int left = 0; int right = nums.length-1;
 
-        while(left <= right)
+        while(left <= right) // 不确定是否存在，用<=，每次用mid来比较
         {
             int mid = (right + left) / 2;
 
