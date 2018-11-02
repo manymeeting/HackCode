@@ -42,7 +42,7 @@ public class WordSearch79 {
 
         char original = board[m][n];
         // backtracking
-        board[m][n] = ' ';
+        board[m][n] = ' '; // 标记为已访问（本轮递归）
         boolean exist = dfs(board, wordArr, m + 1, n, currLen+1)
                 || dfs(board, wordArr, m - 1, n, currLen + 1)
                 || dfs(board, wordArr, m, n + 1, currLen + 1)
