@@ -29,7 +29,7 @@ package arrays;
  Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
  */
-// 遍历array，把所有正的prices[i] - prices[i-1]相加
+// 遍历array，把所有正的prices[i] - prices[i-1]相加 (只取正数)
 
 public class BestTimeBnSStockII122 {
     public int maxProfit(int[] prices) {

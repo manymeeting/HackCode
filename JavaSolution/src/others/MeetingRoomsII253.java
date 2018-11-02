@@ -38,19 +38,19 @@ public class MeetingRoomsII253 {
 
         PriorityQueue<Interval> pq = new PriorityQueue<>((a, b) -> (a.end - b.end));
 
-        pq.offer(intervals[0]); // 从开始时间最早的meeting开始
+        pq.offer(intervals[0]); // 先把开始时间最早的meeting放到pq
 
-        for (int i = 1; i < intervals.length; i++) {
+        for (int i = 1; i < intervals.length; i++) { // 从第二个meeting开始检查
             Interval interval = pq.poll();
 
             if(intervals[i].start >= interval.end) {
-                interval.end = intervals[i].end; // 合并interval
+                interval.end = intervals[i].end; // 合并interval （不需要新room）
             }
             else {
                 pq.offer(intervals[i]); // 需要新的room
             }
 
-            pq.add(interval); // 更新完后放回去
+            pq.add(interval); // 更新完后放回pq
         }
 
         return pq.size(); // 看最后剩下几个经过合并的interval，即为需要的room数量
