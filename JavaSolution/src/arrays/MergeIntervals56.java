@@ -1,8 +1,6 @@
 package arrays;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Given a collection of intervals, merge all overlapping intervals.
@@ -20,8 +18,8 @@ import java.util.List;
 
  */
 
-// 先排序（List.sort(lambba)）,然后遍历，维护一个全局的start和end，
-// 遇到新interval的start小于当前end时就更新end，否则把当前的start和end作为interval加到结果集
+// 用一个pq，按照start从小到大排序，一开始把所有interval都加到pq里，
+// 每次从pq里poll出一个，同时拿到res的最后一个（res先存为ArrayDeque）如果curr.start <= last.end就merge，否则就加到res里
 
 public class MergeIntervals56 {
     public class Interval {
@@ -31,31 +29,35 @@ public class MergeIntervals56 {
         Interval(int s, int e) { start = s; end = e; }
     }
     public List<Interval> merge(List<Interval> intervals) {
-        if(intervals.size() <= 1) return intervals;
 
-        intervals.sort((a, b) -> (a.start - b.start));
+        ArrayDeque<Interval> res = new ArrayDeque<>();
+        PriorityQueue<Interval> pq = new PriorityQueue<>((a, b) -> a.start - b.start);
+        pq.addAll(intervals);
 
-        List<Interval> res = new ArrayList<>();
-
-        int start = intervals.get(0).start;
-        int end = intervals.get(0).end;
-
-        for (Interval interval : intervals) {
-            if(interval.start <= end) {
-                // merge end
-                end = Math.max(end, interval.end);
-
+        while(!pq.isEmpty()) {
+            Interval curr = pq.poll();
+            if(res.size() == 0){
+                res.add(curr);
+                continue;
+            }
+            Interval last =  res.getLast(); // 用ArrayDeque实现常数时间getlast
+            if(curr.start <= last.end) {
+                // merge interval
+                last.end = Math.max(curr.end, last.end);
             }
             else {
-                res.add(new Interval(start, end)); // add之前经过merge后的interval
-                // 更新start，end
-                start = interval.start;
-                end = interval.end;
+                // add new one to res
+                res.add(curr);
             }
         }
 
-        // add the last interval, loop里只有在遇到范围外的interval时才会add之前的
-        res.add(new Interval(start, end));
-        return res;
+
+        // ArrayDeque -> ArrayList
+        List<Interval> resList = new ArrayList<>();
+        for (Interval interval : res) {
+            resList.add(interval);
+        }
+
+        return resList;
     }
 }
