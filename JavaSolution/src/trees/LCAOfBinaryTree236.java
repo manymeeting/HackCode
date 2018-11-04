@@ -32,8 +32,10 @@ package trees;
 
  */
 
+
 // 当root为空或root为p或q任一个时，返回root，
-// 否则递归找left和right，如果right和left都不为空就返回root，否则哪个不为空就返回哪个
+// 否则递归找left和right，如果right和left都不为空就返回root，否则哪个不为空就返回哪个（如果在一个分支内没找到，则一整个分支的return会是null）
+// 此解法可用于235
 
 public class LCAOfBinaryTree236 {
     public class TreeNode {
@@ -51,10 +53,14 @@ public class LCAOfBinaryTree236 {
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
 
-        if(left != null && right != null ) {
+        if(left == null) {
+            return right;
+        }
+        else if(right == null) {
+            return left;
+        }
+        else {
             return root;
         }
-        return left != null ? left : right;
-
     }
 }
