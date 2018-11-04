@@ -37,7 +37,7 @@ import java.util.Map;
 // 每次get或通过put来更新Node时，把目标node移到链表头部（把其它元素挤到尾部），
 // 每次put新node时，如果发现已达到capacity，就删除尾部node，同时删除map中对应的entry，
 
-// 技巧：对于双向链表，维护两个空节点，head和tail，这样操作头尾的删除和插入时很方便
+// 维护两个空节点，head和tail，这样操作头尾的删除和插入时很方便
 
 public class LRUCache146 {
 

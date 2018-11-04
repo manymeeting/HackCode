@@ -35,7 +35,8 @@ import java.util.Set;
 public class NumofDistinctIslands694 {
     private boolean visited[][];
     public int numDistinctIslands(int[][] grid) {
-        visited = new boolean[grid.length][grid[0].length];
+
+        visited = new boolean[grid.length][grid[0].length]; // 也可以不要visited，每次访问时直接把matrix的1改成0
         Set<String> distinctIslands = new HashSet<>();
         StringBuilder currShape; // 每个作为起点的点都要new一个新的sb
 
