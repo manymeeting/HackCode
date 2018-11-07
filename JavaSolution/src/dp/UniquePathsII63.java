@@ -27,8 +27,10 @@ package dp;
  1. Right -> Right -> Down -> Down
  2. Down -> Down -> Right -> Right*/
 
-// 注意第一行和第一列，一旦遇到有1，后续全初始化为0
+// 注意第一行和第一列，一旦遇到有1，后续全初始化为0 ，
+// 因为按照递推，每个位置的unique path数量是左方+上方，而左边第一列的左边是边界（left=0），如果在某处有obstacle则该位置下方的数量都应该是0
 
+// 此外在中间位置遇到obstacle则对应的resMatrix位置也设为0
 public class UniquePathsII63 {
 
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {

@@ -33,7 +33,7 @@ public class PartitionKEqualSumSubsets698 {
 
         if (currSum > targetSum) return false; // 加速
 
-        // 边界条件
+        // 终止条件
         if(k == 0) return true;
 
         if (currSum == targetSum) {

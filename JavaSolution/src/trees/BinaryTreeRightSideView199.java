@@ -20,6 +20,9 @@ import java.util.List;
  5     4       <---
 
  */
+// 解法1（如下）：dfs，每层递归传入一个currHeight，利用结果集的size是否等于currHeight来判断是否加入当前node
+// 解法2：还是用dfs，但用一个global变量记录当前高度，通过高度来决定是否将当前node加入结果集
+// 解法3：用bfs，每一层取最后一个加入结果集
 public class BinaryTreeRightSideView199 {
     public class TreeNode {
         int val;

@@ -36,7 +36,7 @@ public class PowXN50 {
         if(n == 0) {
             return 1;
         }
-        if(n < 0) {
+        if(n < 0) { // 注意负指数的处理（转化为分数^正指数）
             n = -n;
             x = 1 / x;
         }

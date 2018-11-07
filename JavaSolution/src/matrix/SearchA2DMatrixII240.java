@@ -23,8 +23,8 @@ package matrix;
 
  */
 // 注意不能用二分法因为排列顺序不满足
-// 从右上角开始，如果大于target则说明target肯定在该行之后，如果小于target说明target肯定在该列之前
-// col--, row++,  complexity: O(m+n)
+// 从右上角开始，如果target大于当前数则说明target肯定在该行之后（row++），如果小于则说明target肯定在该列之前（col--）
+// complexity: O(m+n)
 public class SearchA2DMatrixII240 {
 
     public boolean searchMatrix(int[][] matrix, int target) {

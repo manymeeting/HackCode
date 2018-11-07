@@ -29,8 +29,8 @@ import java.util.LinkedList;
  */
 
 
-// 用一个Deque，循环nums一遍，在最左端维持当前window中的最大值，保持Deque中数字递减，
-// 当前i大于window size的时候每次peekFirst即可得到目前window中的最大值
+// 用一个Dequ（存index），循环nums一遍，在最左端维持当前window中的最大值，保持Deque中数字递减，
+// 当前i大于window size的时候每次peekFirst即可得到目前window中的最大值（最后nums[deque.peekFirst()]就是结果）
 
 public class SlidingWindowMax239 {
     public int[] maxSlidingWindow(int[] nums, int k) {

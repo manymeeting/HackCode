@@ -22,7 +22,7 @@ import java.util.Map;
  All inputs are guaranteed to be non-empty strings.
  * */
 
-// 每个节点包括一个Map<Integer, TrieNode>用来存所有的children，
+// 每个节点包括一个Map<Integer, TrieNode>用来存所有的children（Integer是当前字符-'a'的值），
 // 同时维护一个isWord的boolean变量来判断是否是完整word
 
 public class ImplementTrie208 {

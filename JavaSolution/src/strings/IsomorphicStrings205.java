@@ -45,8 +45,9 @@ public class IsomorphicStrings205 {
             }
             else
             {
-                if(charMap.containsValue(chT))
+                if(charMap.containsValue(chT)) // 注意此处用了containsValue来判断是否存在该val
                 {
+                    // 说明val相同key不同
                     return false;
                 }
                 charMap.put(chS, chT);

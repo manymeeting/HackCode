@@ -22,7 +22,7 @@ import java.util.*;
 
  */
 
-// 用map来归类，key为排序后的char数组，value为原str
+// 用map来归类，key为排序后且string化的char数组，value为原str
 
 public class GroupAnagrams49 {
     public List<List<String>> groupAnagrams(String[] strs) {
