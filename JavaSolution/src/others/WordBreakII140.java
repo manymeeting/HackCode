@@ -61,7 +61,7 @@ public class WordBreakII140 {
             return memory.get(s);
         }
 
-        List<String> res = new ArrayList<>();
+        List<String> res = new ArrayList<>(); // 每次递归内部new一个新的list
         for (String word : wordDict) {
             if(s.startsWith(word)) {
                 String next = s.substring(word.length());

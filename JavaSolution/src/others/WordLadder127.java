@@ -44,6 +44,7 @@ import java.util.Set;
 // 每次从reached里拿word出来，遍历替换每个char，看是否跟wordset里的某个match，
 // match则再判断是否==endWord，等于则结束，不等则放入下一轮的reached里
 
+// 注意每次遍历完reachedSet会产生一个新的reachedSet，需要用新的覆盖旧的再继续下一轮遍历
 public class WordLadder127 {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         Set<String> wordSet = new HashSet<>(wordList);
