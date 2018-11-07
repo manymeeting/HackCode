@@ -14,9 +14,10 @@ package strings;
 
  */
 
-// 解释：基本上采用暴力解法，i和j从两边开始对比ch，再维护一个end位置，从末尾开始，遇到不一样的就向前挪一位，
+// 解释：基本上采用暴力解法，i和j从两边开始对比ch，再维护一个end位置，从末尾开始，
+// 遇到不一样的就把end向前挪一位，同时reset i，然后重新开始两头对比，
 // 最后end的位置就是当前str中包含的最大的回文末尾（因为只能在前面加，所以这个回文一定是从0位置开始），
-// 然后把后面部分reverse一下加到前面即可
+// 然后把该回文后面的部分reverse一下加到前面即可
 
 public class ShortestPalindrome214 {
     public String shortestPalindrome(String s) {

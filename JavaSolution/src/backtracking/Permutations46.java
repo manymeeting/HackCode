@@ -22,7 +22,8 @@ import java.util.List;
 
  */
 
-// 递归，注意每次要copy当前的templist
+// 标准的backtracking写法，注意要避免结果集中出现重复数字
+    
 public class Permutations46 {
 
     public List<List<Integer>> permute(int[] nums) {
@@ -34,23 +35,17 @@ public class Permutations46 {
 
     public void backTrack(List<List<Integer>> res, List<Integer> tempList, int[] nums)
     {
-        if(tempList.size() == nums.length)
-        {
+        if(tempList.size() == nums.length) {
             res.add(new ArrayList<>(tempList));
+            return;
         }
-        else
-        {
-            for (int i = 0; i < nums.length; i++)
-            {
-                if(tempList.contains(nums[i]))
-                {
-                    continue;
-                }
-                ArrayList<Integer> copy = new ArrayList<>(tempList);
-                copy.add(nums[i]);
-                backTrack(res, copy, nums);
 
-            }
+        for (int i = 0; i < nums.length; i++) {
+            if(tempList.contains(nums[i])) continue; // 避免出现[1,2,2..]这样的重复
+            tempList.add(nums[i]);
+            backTrack(res, tempList, nums);
+            tempList.remove(tempList.size() - 1);
+
         }
     }
 
