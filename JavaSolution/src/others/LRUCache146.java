@@ -85,7 +85,7 @@ public class LRUCache146 {
         }
         else {
             if(map.size() == capacity) {
-                map.remove(tail.prev.key);
+                map.remove(tail.prev.key); // 注意删除的时候也要删除map里的entry
                 remove(tail.prev);
             }
 
