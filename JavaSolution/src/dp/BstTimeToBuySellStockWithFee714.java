@@ -1,4 +1,4 @@
-package arrays;
+package dp;
 
 /**
  * Your are given an array of integers prices, for which the i-th element is the price of a given stock on day i; and a non-negative integer fee representing a transaction fee.
@@ -24,18 +24,19 @@ package arrays;
  */
 
 // 详细分析：https://www.jianshu.com/p/9fa0faff99da
-// 每个时间点有两种可能：hold或sell，分别取
+// 每个时间点有两种可能：hold或sell（当天股票在手中或不在手中），分别取
 // sold = max（前一天sold，前一天hold并且今天sell）
 // hold = max（前一天hold，前一天sell并且今天buy）
 
 public class BstTimeToBuySellStockWithFee714 {
     public int maxProfit(int[] prices, int fee) {
 
-        int hold = -prices[0]; // 初始化一个赋值，代表不存在的状态
+        int hold = -prices[0]; // 初始化一个负值，代表不存在的状态
         int sold = 0;
 
         for(int i = 1; i < prices.length; i++) {
             sold = Math.max(sold, hold + prices[i] - fee);
+            // 同一天可以进行多次交易，因此先算sold还是hold都可以
             hold = Math.max(hold, sold - prices[i]); // buy的时候不用交fee
         }
 
