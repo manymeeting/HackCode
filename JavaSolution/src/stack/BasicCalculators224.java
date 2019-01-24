@@ -1,4 +1,4 @@
-package strings;
+package stack;
 
 /***
  * Implement a basic calculator to evaluate a simple expression string.
