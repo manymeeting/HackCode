@@ -1,4 +1,4 @@
-package strings;
+package hashtable;
 
 import java.util.ArrayList;
 import java.util.HashSet;
