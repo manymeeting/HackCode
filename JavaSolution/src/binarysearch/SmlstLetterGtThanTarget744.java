@@ -45,7 +45,8 @@ package binarysearch;
 // 典型二分法查找，
 
 // 总结：如果要找完全match的，判断mid时直接用 if(arr[mid] < target)，最后的left就会落在目标上，
-// 如果是找相邻的大的，要用if(arr[mid] <= target) 来控制left往右移动
+// 如果是找相邻的大的，要用if(arr[mid] <= target) 来控制left往右移动，
+// 如果是找相邻的小的，还是if(arr[mid] < target)，但在之前加一个如果arr[mid] == target则right-1
 
 public class SmlstLetterGtThanTarget744 {
 
