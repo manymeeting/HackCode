@@ -23,46 +23,53 @@ package binarysearch;
 
  */
 
-// 需要研究
-// https://blog.csdn.net/magicbean2/article/details/79733065
+// Solution
+
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+/**
+ * This solution probably doesn't have the best runtime but it's really simple and easy to understand.
+
+ Says if the list is [1, 7, 23, 29, 47], we can easily have this table of relationships
+
+ 1/47  < 1/29    < 1/23 < 1/7
+ 7/47  < 7/29    < 7/23
+ 23/47 < 23/29
+ 29/47
+ So now the problem becomes "find the kth smallest element of (n-1) sorted list"
+
+ Following is my implementation using PriorityQueue, running time is O(nlogn) O(max(n,k) * logn), space is O(n):
+
+ */
 
 public class KthSmallestPrimeFraction786 {
     public int[] kthSmallestPrimeFraction(int[] A, int K) {
-        double l = 0, r = 1; // 所有分数值都在0-1之间
-        int p = 0, q = 1;
-
-
         int n = A.length;
-        while(true) {
-            int cnt = 0;
-            p = 0;
-            double m = l + (r - l) / 2;
-            // using A[i] as the numerator, and A[n - 1 - j] denominator
-
-            for (int i = 0, j = n - 2; i < n; i++) {
-                // find the first A[n - 1 - j] that A[i] / A[n - 1 - j] <= mid
-                while (j >= 0 && A[i] > m * A[n - 1 - j]) j--;
-
-                cnt += (j + 1);
-
-                // update p and q if A[i] / A[n - 1 - j] is larger than p / q
-                if (j >= 0 && p * A[n - 1 - j] < q * A[i]) {
-                    p = A[i];
-                    q = A[n - 1 - j];
-                }
+        // 0: numerator idx, 1: denominator idx
+        PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                int s1 = A[o1[0]] * A[o2[1]];
+                int s2 = A[o2[0]] * A[o1[1]];
+                return s1 - s2;
             }
-
-            if(cnt == K) {
-                return new int[]{p, q};
-            }
-            else if(cnt < K) {
-                l = m; // 不用加偏移量，因为值域是是连续的
-            }
-            else {
-                r = m;
-            }
-
+        });
+        for (int i = 0; i < n-1; i++) {
+            pq.add(new int[]{i, n-1});
         }
+        for (int i = 0; i < K-1; i++) {
+            int[] pop = pq.remove();
+            int ni = pop[0];
+            int di = pop[1];
+            if (pop[1] - 1 > pop[0]) {
+                pop[1]--;
+                pq.add(pop);
+            }
+        }
+
+        int[] peek = pq.peek();
+        return new int[]{A[peek[0]], A[peek[1]]};
 
 
     }
