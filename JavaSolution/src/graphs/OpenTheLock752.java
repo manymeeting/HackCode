@@ -63,7 +63,7 @@ public class OpenTheLock752 {
 
                 for (int i = 0; i < 4; i++) {
                     char ch = curr.charAt(i);
-                    // 注意str拼接的时候，ch要转化为数字来append，否则'0'会被解释为ascii码
+                    // ch要转化为数字来append，否则'0'会被解释为ascii码（三元操作符会参考最右侧表达式的类型来推断左端表达式的类型）
                     String newStr1 = curr.substring(0, i) + (ch == '9' ? 0 : ch - '0' + 1) + curr.substring(i+1);
                     String newStr2 = curr.substring(0, i) + (ch == '0' ? 9 : ch - '0' - 1) + curr.substring(i+1);
 
