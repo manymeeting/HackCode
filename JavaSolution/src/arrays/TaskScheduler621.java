@@ -25,7 +25,9 @@ import java.util.Queue;
  The integer n is in the range [0, 100].
  */
 // 用pq来排序字符出现频率（不用存ch，因为只要求给出最终所需time），
-// 再用一个map<时间点，剩余出现次数>来记录coolDown信息，注意其实不用记录字符和cooldown的关系
+// 再用一个map<时间点，剩余出现次数>来记录coolDown信息，注意其实不用记录字符和coolDown的关系
+
+// 另一种解法，更直观：直接算出来，size = Math.min((n+1) * 最大freq) + 最大freq的数的个数， task个数)
 public class TaskScheduler621 {
     public int leastInterval(char[] tasks, int n) {
         if(n == 0) return tasks.length;
@@ -43,7 +45,7 @@ public class TaskScheduler621 {
         int currTime = 0;
         while(!queue.isEmpty() || !coolDown.isEmpty()) {
 
-            if(coolDown.containsKey(currTime - n - 1)) { //
+            if(coolDown.containsKey(currTime - n - 1)) {
                 queue.offer(coolDown.remove(currTime - n - 1));
 
             }
