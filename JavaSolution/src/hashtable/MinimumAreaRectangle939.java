@@ -42,9 +42,7 @@ public class MinimumAreaRectangle939 {
             if(!map.containsKey(point[0])) {
                 map.put(point[0], new ArrayList<>());
             }
-            else {
-                map.get(point[0]).add(point[1]);
-            }
+            map.get(point[0]).add(point[1]);
         }
 
 
