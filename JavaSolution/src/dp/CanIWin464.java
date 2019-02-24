@@ -43,7 +43,7 @@ public class CanIWin464 {
     private Map<Integer, Boolean> map;
     private boolean[] used;
     public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
-        if (desiredTotal == 0) return true; // Corner case
+        if (desiredTotal == 0) return true; // Corner case，开局就是0，直接赢
 
         if((1+maxChoosableInteger) * maxChoosableInteger / 2 < desiredTotal) {
             return false;
@@ -56,7 +56,7 @@ public class CanIWin464 {
     }
 
     private boolean helper(int target) {
-        if(target <= 0) return false; // 对方选择以后target已经<=0，说明对方已赢
+        if(target <= 0) return false; // 上一轮选择以后target已经<=0，说明对方已赢
 
         int key = bitFormat(used);
         if(!map.containsKey(key)) {
@@ -64,7 +64,7 @@ public class CanIWin464 {
             for (int i = 1; i < used.length; i++) {
                 if(!used[i]) {
                     used[i] = true;
-                    if (!helper(target - i)) {
+                    if (!helper(target - i)) { // 判断选择后下一轮（对方）是否输
                         map.put(key, true);
                         used[i] = false;
                         return true;
