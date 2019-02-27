@@ -21,7 +21,9 @@ package trees;
  */
 
 // 写两个函数分别计算left的高度和right高度，如果两个高度相等直接按2^n-1计算node，否则递归左右child，同时 + 1
-    
+
+// 复杂度：(logN)^2
+
 public class CountCompleteTreeNodes222 {
     public class TreeNode {
         int val;
