@@ -20,7 +20,7 @@ Explanation: One 1 at depth 1, one 4 at depth 2, and one 6 at depth 3; 1 + 4*2 +
 
 // 写一个递归helper来处理嵌套的list，传当前的level到每一层递归中，遇到int就返回level * val
 
-class Solution {
+class NestedListWeightSum339 {
 	// This is the interface that allows for creating nested lists.
  	// You should not implement it, or speculate about its implementation
 	public interface NestedInteger {

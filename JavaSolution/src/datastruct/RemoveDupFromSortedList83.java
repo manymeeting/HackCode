@@ -17,7 +17,7 @@ Output: 1->2->3
 
 
 // 每次判断curr和nextNode，遇到dup的时候用while，直到遇到不一样的
-class Solution {
+class RemoveDupFromSortedList83 {
 
 	public class ListNode {
 		int val;
