@@ -29,7 +29,8 @@ package datastruct;
 
 // 用bucket+list来设计，给一个长度有限的bucket数组，每个index包括一个list，
 // index用number % bucketsize 来映射，
-// 注意list的操作，需要操纵一个prev指针来访问元素
+
+// 注意list的操作，需要维护一个prev指针，这样当遍历结束后如果没有发现exisiting的key，就可以直接在保留的prev引用上append
 
 public class DesignHashMap706 {
     /** Initialize your data structure here. */
