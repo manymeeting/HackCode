@@ -31,32 +31,38 @@ import java.util.List;
 
 // DFS遍历，用一个map来存copy过的每一个节点，因为这种graph会有循环引用的情况，要确保每个节点不被重复new
 public class CloneGraph133 {
-    class UndirectedGraphNode {
-        List<UndirectedGraphNode> neighbors;
-        int label;
-        UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
+    class Node {
+        public int val;
+        public List<Node> neighbors;
+
+        public Node() {}
+
+        public Node(int _val,List<Node> _neighbors) {
+            val = _val;
+            neighbors = _neighbors;
+        }
     };
 
-    private HashMap<Integer, UndirectedGraphNode> map = new HashMap<>();
+    private HashMap<Integer, Node> map = new HashMap<>();
 
-    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+    public Node cloneGraph(Node node) {
         return clone(node);
     }
 
-    public UndirectedGraphNode clone(UndirectedGraphNode node)
+    public Node clone(Node node)
     {
         if(node == null) return null;
 
 
-        if(map.containsKey(node.label))
+        if(map.containsKey(node.val))
         {
-            return map.get(node.label);
+            return map.get(node.val);
         }
 
-        UndirectedGraphNode copy = new UndirectedGraphNode(node.label);
-        map.put(node.label, copy);
+        Node copy = new Node(node.val, new ArrayList<>());
+        map.put(node.val, copy);
 
-        for (UndirectedGraphNode neighbor : node.neighbors)
+        for (Node neighbor : node.neighbors)
         {
             copy.neighbors.add(clone(neighbor));
         }
