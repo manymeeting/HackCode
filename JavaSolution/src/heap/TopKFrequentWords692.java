@@ -1,4 +1,4 @@
-package arrays;
+package heap;
 
 import java.util.*;
 
