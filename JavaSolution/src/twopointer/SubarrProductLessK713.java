@@ -1,4 +1,4 @@
-package arrays;
+package twopointer;
 
 /**
  Your are given an array of positive integers nums.
