@@ -1,4 +1,4 @@
-package arrays;
+package stack;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
