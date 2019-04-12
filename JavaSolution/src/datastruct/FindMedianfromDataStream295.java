@@ -28,8 +28,8 @@ import java.util.PriorityQueue;
 
  Follow up:
 
- If all integer numbers from the stream are between 0 and 100, how would you optimize it?
- If 99% of all integer numbers from the stream are between 0 and 100, how would you optimize it?
+ If all integer numbers from the stream are between 0 and 100, how would you optimize it? （用bucket来存数字的出现频率）
+ If 99% of all integer numbers from the stream are between 0 and 100, how would you optimize it? （用bucket和两个list，一个存小于0的，一个存大于100的）
  */
 
 // 用两个PQ来存，一个是大的部分，一个是小的部分，这样保证了每次中位数计算可以在常数时间内完成
