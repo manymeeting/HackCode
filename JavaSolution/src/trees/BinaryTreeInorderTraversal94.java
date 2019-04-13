@@ -22,7 +22,11 @@ import java.util.Stack;
  Follow up: Recursive solution is trivial, could you do it iteratively?
  */
 
-// 用stack模拟递归的遍历顺序，注意while循环的终止条，从叶节点开始思考比较容易
+// 用stack来维护当前的root，在一个while循环里，用一个curr指针从root开始，如果left不为空就一直curr=curr.left，
+// 否则curr回退到pop出的node，进行处理，然后curr = curr.right
+
+// 循环终止条件：curr和stack都为空
+
 public class BinaryTreeInorderTraversal94 {
     public class TreeNode {
         int val;
