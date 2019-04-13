@@ -61,7 +61,7 @@ public class IsSubsequence392 {
 
     }
 
-    // 在list中找一个值刚刚比idx大的值
+    // 在list中找一个等于或刚刚比idx大的值
     private int binarySearch(int idx, int left, int right, List<Integer> list) {
         if(left < 0 || right > list.size()) {
             return -1;
