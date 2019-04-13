@@ -82,4 +82,46 @@ public class DeleteNodeInBST450 {
         return root;
 
     }
+
+    // Exercise
+    // public TreeNode deleteNodeFromBST(TreeNode root, int val) {
+
+    //     if(root == null) {
+    //         return null;
+    //     }
+
+    //     if(root.val > val) {
+    //         root.left = deleteNode(root.left, val);
+    //     }
+    //     if(root.val < val) {
+    //         root.right = deleteNode(root.right, val);   
+    //     }
+    //     if(root.val == val) {
+    //         // If is leaf node
+    //         if(root.left == null && root.right == null) {
+    //             return null;
+    //         }
+
+    //         // If has left child but no right child
+    //         if(root.left != null && root.right == null) {
+    //             return root.left;
+    //         }
+
+    //         // If has right child but no left child
+    //         if(root.right != null && root.left == null) {
+    //             return root.right;
+    //         }
+
+    //         // Has both children, find the smallest one in the right subtree
+    //         TreeNode smallestRight = findSmallestRight(root);
+    //         TreeNode smallestRightParent = findParent(smallestRight);
+            
+    //         smallestRightParent.left = smallestRight.right;
+    //         smallestRight.right = root.right;
+    //         smallestRight.left = root.left;
+    //         return smallestRight;
+
+    //     }
+
+    // }
 }
