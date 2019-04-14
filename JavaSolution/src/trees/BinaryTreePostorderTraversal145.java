@@ -23,6 +23,7 @@ Follow up: Recursive solution is trivial, could you do it iteratively?
 
 // 解法1：用一个stack，从上到下然后再reverse。起始时把root push进去，每次pop出来处理，然后添加左右child（如果不为null），
 // 最后reverse list
+// (补充：实际上post-order的顺序就是反向（左右顺序颠倒）preOrder结果的reverse)
 
 class BinaryTreePostorderTraversal145 {
 	public class TreeNode {
