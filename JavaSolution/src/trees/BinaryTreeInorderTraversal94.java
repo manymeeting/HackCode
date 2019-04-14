@@ -9,17 +9,17 @@ import java.util.Stack;
  *
  * Given a binary tree, return the inorder traversal of its nodes' values.
 
- Example:
+Example:
 
- Input: [1,null,2,3]
- 1
- \
- 2
- /
- 3
+Input: [1,null,2,3]
+   1
+    \
+     2
+    /
+   3
 
- Output: [1,3,2]
- Follow up: Recursive solution is trivial, could you do it iteratively?
+Output: [1,3,2]
+Follow up: Recursive solution is trivial, could you do it iteratively?
  */
 
 // 用stack来维护当前的root，在一个while循环里，用一个curr指针从root开始，如果left不为空就一直curr=curr.left，
