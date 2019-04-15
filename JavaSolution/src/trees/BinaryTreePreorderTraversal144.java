@@ -7,19 +7,19 @@ import java.util.Stack;
 /**
  * Given a binary tree, return the preorder traversal of its nodes' values.
 
- Example:
+Example:
 
- Input: [1,null,2,3]
- 1
- \
- 2
- /
- 3
+Input: [1,null,2,3]
+   1
+    \
+     2
+    /
+   3
 
- Output: [1,2,3]
- Follow up: Recursive solution is trivial, could you do it iteratively?
+Output: [1,2,3]
+Follow up: Recursive solution is trivial, could you do it iteratively?
 
- */
+*/
 
 // 用stack模拟递归循序，注意while循环的终止判断（当前node是否null，或stack里是否还有元素可以pop）
 

@@ -4,20 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Given a binary tree, imagine yourself standing on the right side of it,
- * return the values of the nodes you can see ordered from top to bottom.
+ * Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
 
- Example:
+Example:
 
- Input: [1,2,3,null,5,null,4]
- Output: [1, 3, 4]
- Explanation:
+Input: [1,2,3,null,5,null,4]
+Output: [1, 3, 4]
+Explanation:
 
- 1            <---
+   1            <---
  /   \
- 2     3         <---
+2     3         <---
  \     \
- 5     4       <---
+  5     4       <---
 
  */
 // 解法1（如下）：dfs，每层递归传入一个currHeight，利用结果集的size是否等于currHeight来判断是否加入当前node
