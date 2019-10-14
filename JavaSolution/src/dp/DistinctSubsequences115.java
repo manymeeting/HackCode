@@ -65,7 +65,7 @@ public class DistinctSubsequences115 {
 
             for (int i = j; i < lenS; i++) {
                 boolean flag = s.charAt(i) == t.charAt(j);
-                if(j == 0) { // T的第一个字符，单独处理
+                if(j == 0) { // T的第一个字符，初始化
                     if(i == 0) { // S的第一个字符
                         dp[i][j] = flag ? 1 : 0; // 把S的第一个字符变成T的第一个字符的方法个数，相等就是1，否则就是0
                     }
