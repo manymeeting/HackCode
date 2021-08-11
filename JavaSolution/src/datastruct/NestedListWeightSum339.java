@@ -25,12 +25,6 @@ class NestedListWeightSum339 {
  	// You should not implement it, or speculate about its implementation
 	public interface NestedInteger {
 
-		// Constructor initializes an empty nested list.
-		public NestedInteger();
-
-		// Constructor initializes a single integer.
-		public NestedInteger(int value);
-
 		// @return true if this NestedInteger holds a single integer, rather than a nested list.
 		public boolean isInteger();
 
