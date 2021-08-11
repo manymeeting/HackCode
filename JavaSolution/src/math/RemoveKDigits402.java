@@ -1,7 +1,5 @@
 package math;
 
-import javafx.beans.binding.StringBinding;
-
 import java.util.ArrayDeque;
 
 /**

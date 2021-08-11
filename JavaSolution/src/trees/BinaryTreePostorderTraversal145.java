@@ -40,7 +40,7 @@ class BinaryTreePostorderTraversal145 {
     	TreeNode curr = null;
     	stack.push(root);
     	while(!stack.isEmpty()) {
-    		curr = stack.pop()
+    		curr = stack.pop();
     		if(curr.left != null) stack.push(curr.left);
 			if(curr.right != null) stack.push(curr.right);
 			res.add(curr.val);
