@@ -1,7 +1,5 @@
 package trees;
 
-
-import java.util.*;
 /**
 Given the root of a binary tree with N nodes, each node in the tree has node.val coins, and there are N coins total.
 

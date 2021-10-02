@@ -1,7 +1,5 @@
 package trees;
 
-import java.util.*;
-
 /**
 We are given the head node root of a binary tree, where additionally every node's value is either a 0 or a 1.
 

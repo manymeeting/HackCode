@@ -1,6 +1,5 @@
 package strings;
 
-import java.util.*;
 /**
 We have a string S of lowercase letters, and an integer array shifts.
 

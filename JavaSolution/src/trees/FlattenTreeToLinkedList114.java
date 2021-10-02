@@ -41,7 +41,7 @@ public class FlattenTreeToLinkedList114 {
 
     private TreeNode prev = null;
 
-    private void flatten(TreeNode root) {
+    public void flatten(TreeNode root) {
         if (root == null)
             return;
         flatten(root.right);

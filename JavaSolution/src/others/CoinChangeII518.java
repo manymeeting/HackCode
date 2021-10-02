@@ -59,7 +59,7 @@ public class CoinChangeII518 {
     }
 
     // 不加set来去重的话会出现 1+1+1+2 和 1+1+2+1 这样的重复
-    private int recursion(Set<String> set, int amount, int[] coins, int tempSum, List<Integer> tempList)
+    public int recursion(Set<String> set, int amount, int[] coins, int tempSum, List<Integer> tempList)
     {
         if(tempSum == amount)
         {

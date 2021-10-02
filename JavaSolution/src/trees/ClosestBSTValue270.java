@@ -37,8 +37,7 @@ public class ClosestBSTValue270 {
     public int findCloset(TreeNode root, double target, int resVal, double minDiff)
     {
         if(root == null) return resVal;
-
-        double test = Math.abs(root.val - target);
+        
         if(Math.abs(root.val - target) < minDiff ) {
             resVal = root.val;
             minDiff= Math.abs(root.val - target);

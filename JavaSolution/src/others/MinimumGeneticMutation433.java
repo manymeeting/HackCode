@@ -1,9 +1,7 @@
 package others;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * A gene string can be represented by an 8-character long string, with choices from "A", "C", "G", "T".

@@ -49,7 +49,7 @@ public class NAryTreePostorderTraversal590 {
         res.add(root.val);
     }
 
-    private void iterative(Node root, List<Integer> res)
+    public void iterative(Node root, List<Integer> res)
     {
         if (root == null) return;
         Stack<Node> stack = new Stack<>();

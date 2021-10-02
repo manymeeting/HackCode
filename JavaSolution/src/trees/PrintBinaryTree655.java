@@ -61,7 +61,6 @@ public class PrintBinaryTree655 {
     }
 
     private List<List<String>> res;
-    private int height = 0;
     private int levelLen = 0;
 
     public List<List<String>> printTree(TreeNode root) {

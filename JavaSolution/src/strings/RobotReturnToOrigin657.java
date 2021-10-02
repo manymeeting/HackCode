@@ -1,7 +1,5 @@
 package strings;
 
-import java.util.ArrayDeque;
-
 /**
  * There is a robot starting at position (0, 0), the origin, on a 2D plane. Given a sequence of its moves, judge if this robot ends up at (0, 0) after it completes its moves.
 

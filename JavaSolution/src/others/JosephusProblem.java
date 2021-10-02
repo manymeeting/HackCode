@@ -39,13 +39,6 @@ public class JosephusProblem {
         return map.get(cur.val);
     }
 
-    public static void main(String[] args) {
-        int i = 10;
-        int j = 5;
-        int test = get_winner(10,5);
-        System.out.print(test);
-    }
-
     private static class Node{
         Node prev;
         Node next;

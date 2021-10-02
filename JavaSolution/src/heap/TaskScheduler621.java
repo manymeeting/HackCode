@@ -3,7 +3,6 @@ package heap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 /**
  * Given a char array representing tasks CPU need to do.

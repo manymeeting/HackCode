@@ -39,8 +39,7 @@ public class KthSmlstEleInASortedMatrix378 {
     }
     public int kthSmallest(int[][] matrix, int k) {
         PriorityQueue<Tuple> pq = new PriorityQueue<>((a, b) -> a.val - b.val);
-
-        int m = matrix.length;
+        
         int n = matrix[0].length;
         for (int i = 0; i < matrix[0].length; i++) {
             pq.add(new Tuple(0, i, matrix[0][i]));

@@ -1,6 +1,5 @@
 package trees;
 
-import java.util.ArrayList;
 
 /***
  *Given two binary trees, write a function to check if they are the same or not.
