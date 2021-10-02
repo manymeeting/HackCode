@@ -1,4 +1,4 @@
-package heap;
+package greedy;
 
 import java.util.*;
 

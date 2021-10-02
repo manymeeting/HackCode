@@ -1,4 +1,4 @@
-package twopointer;
+package greedy;
 
 import java.util.*;
 
