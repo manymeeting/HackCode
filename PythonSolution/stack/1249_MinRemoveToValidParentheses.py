@@ -15,6 +15,9 @@ Example:
 Input: s = "a)b(c)d"
 Output: "ab(c)d"
 
+
+思路：从左往右scan一遍，遇到左括号加到stack里，遇到右括号pop出来，如果在pop的时候发现stack为空，
+则说明这个右括号是invalid需要删除，记录下index。全部scan结束后stack里可能还有没有匹配的左括号，也要在最后删除。
 """
 
 
