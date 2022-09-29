@@ -50,7 +50,7 @@ public class FindKPairsWithSmallestSums373 {
     public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         // min queue, sorted by pair sum
         PriorityQueue<int[]> q = new PriorityQueue<>((a, b) -> (a[0] + a[1]) - (b[0] + b[1]));
-        List<int[]> res = new ArrayList();
+        List<int[]> res = new ArrayList<>();
         int N1 = nums1.length, N2 = nums2.length;
         if (N1 == 0 || N2 == 0)
             return res; // no pairs to form, just return an empty res list

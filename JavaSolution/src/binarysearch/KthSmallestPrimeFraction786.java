@@ -60,8 +60,6 @@ public class KthSmallestPrimeFraction786 {
         }
         for (int i = 0; i < K-1; i++) {
             int[] pop = pq.remove();
-            int ni = pop[0];
-            int di = pop[1];
             if (pop[1] - 1 > pop[0]) {
                 pop[1]--;
                 pq.add(pop);

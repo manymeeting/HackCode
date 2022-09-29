@@ -28,8 +28,8 @@ public class FindAllPossibleRecipes2115 {
     public List<String> findAllRecipes(String[] recipes, List<List<String>> ingredients, String[] supplies) {
 
         // recipes -> [ingredients...]
-        Map<String, List<String>> graph = new HashMap();
-        Map<String, Integer> inDegree = new HashMap();
+        Map<String, List<String>> graph = new HashMap<>();
+        Map<String, Integer> inDegree = new HashMap<>();
         // We need this set just to identify if a node is a recipe.
         Set<String> recipeSet = new HashSet<>();
 
