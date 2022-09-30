@@ -1,4 +1,4 @@
-package graphs;
+package graphs.topologicalsort;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
