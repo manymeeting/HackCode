@@ -18,7 +18,9 @@ Note that there may be other places where the carpet covers 9 white tiles.
 It can be shown that the carpet cannot cover more than 9 white tiles.
 
 
-TODO：思路补充
+思路：可以用sliding window，也可以用下面这个prefixsum+binary search，比较关键的两个点
+1. 不用对每个index都做prefix sum，可以观察发现必须对其tile开始的index才能覆盖最大长度，所以只需要对每个tile做prefix sum即可。
+2. 一个不是很明显的binary search的应用：遍历每个tile的起始点，加上carpet长度后得到一个终止位置，需要用binary search找出这个终止点落在哪个tile上。
  */
 public class MaxWhiteTilesCovered2271 {
     
@@ -55,19 +57,18 @@ public class MaxWhiteTilesCovered2271 {
 
     private int binSearchForClosetLessThanOrEqual(int[][] tiles, int left, int right, int val) {
         int mid = 0;
-        int res = left;
-        while(left <= right) {
+        while(left < right - 1) {
             mid = left + (right - left) / 2;
-            if (tiles[mid][0] > val) {
-                right = mid -1;
+            if (tiles[mid][0] <= val) {
+                left = mid;
             }
             else {
-                // 此处不可缺少，因为mid值可能会一直比target大，不能直接return mid。
-                res = mid;
-                left = mid + 1;
+                right = mid;
             }
         }
 
-        return res;
+        // Post processing - 当left和right相邻时停下来，这时需要判断一个corner case，
+        // 即val超出了最后一个tile能达到的长度，这种情况下right是目标index，否则就是left。
+        return tiles[right][0] <= val ? right : left;
     }
 }
