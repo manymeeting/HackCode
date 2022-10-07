@@ -1,4 +1,4 @@
-package datastruct;
+package datastruct.linkedlist;
 
 /**
  * Reverse a singly linked list.
