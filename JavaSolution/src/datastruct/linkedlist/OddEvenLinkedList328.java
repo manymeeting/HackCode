@@ -1,6 +1,5 @@
-package datastruct;
+package datastruct.linkedlist;
 
-import java.util.List;
 
 /**
  *

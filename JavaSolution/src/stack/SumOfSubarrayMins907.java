@@ -32,6 +32,8 @@ Constraints:
 思路：属于难题，规律不是很好找，需要仔细列举后才能看出一个可行的算法，此处参照 https://leetcode.com/problems/sum-of-subarray-minimums/discuss/2118729/Very-detailed-stack-explanation-O(n)-or-Images-and-comments
 用一个stack来记录从左往右遍历过程中出现的上一个最小的值的index。注意两个占位数值的使用。
 
+关键字：占位数，sentinel，monotonic stack
+
  */
 public class SumOfSubarrayMins907 {
 

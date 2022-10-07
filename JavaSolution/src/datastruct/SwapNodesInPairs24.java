@@ -1,7 +1,5 @@
 package datastruct;
 
-import java.util.List;
-
 /**
  * Given a linked list, swap every two adjacent nodes and return its head.
 

@@ -1,8 +1,6 @@
 package datastruct;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Design and implement a data structure for a compressed string iterator. It should support the following operations: next and hasNext.
