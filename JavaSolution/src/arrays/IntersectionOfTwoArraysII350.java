@@ -1,9 +1,7 @@
 package arrays;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 
 /**
  * Given two arrays, write a function to compute their intersection.

@@ -1,8 +1,5 @@
 package arrays;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Given a list of non-negative numbers and a target integer k,
  * write a function to check if the array has a continuous subarray of size

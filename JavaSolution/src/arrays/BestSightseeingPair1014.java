@@ -1,7 +1,5 @@
 package arrays;
 
-import java.util.*;
-
 
 /**
 Given an array A of positive integers, A[i] represents the value of the i-th sightseeing spot, and two sightseeing spots i and j have distance j - i between them.

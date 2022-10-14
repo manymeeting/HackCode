@@ -1,7 +1,5 @@
 package arrays;
 
-import java.util.Arrays;
-
 /**
  * Given an unsorted integer array, find the smallest missing positive integer.
 

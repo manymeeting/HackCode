@@ -1,7 +1,5 @@
 package arrays;
 
-import java.util.*;
-
 /**
 We have an array A of integers, and an array queries of queries.
 
