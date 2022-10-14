@@ -32,6 +32,19 @@ arr is sorted in ascending order.
 
 思路：构造一个长度为k的window，然后用binary search找这个window最合适的开始位置。注意index的处理。
 
+case 1: x - A[mid] < A[mid + k] - x, need to move window go left
+-------x----A[mid]-----------------A[mid + k]----------
+
+case 2: x - A[mid] < A[mid + k] - x, need to move window go left again
+-------A[mid]----x-----------------A[mid + k]----------
+
+case 3: x - A[mid] > A[mid + k] - x, need to move window go right
+-------A[mid]------------------x---A[mid + k]----------
+
+case 4: x - A[mid] > A[mid + k] - x, need to move window go right
+-------A[mid]---------------------A[mid + k]----x-----
+
+计算距离时不能用abs，否则有case会fail。
  */
 public class FindKClosestElements658 {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
