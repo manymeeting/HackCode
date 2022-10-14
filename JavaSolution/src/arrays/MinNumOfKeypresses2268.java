@@ -1,8 +1,6 @@
-package others;
+package arrays;
 
 import java.util.Arrays;
-
-import javax.swing.text.AbstractDocument.LeafElement;
 
 /**
  * 
@@ -23,33 +21,29 @@ Constraints:
 s consists of lowercase English letters.
 
 
+思路：观察可以发现，最终的count跟letter没有关系，只跟各个letter出现的频率有关系，用一个array来记录对应字母的频率，sort以后直接按照是第几轮1-9来计算即可。
  */
 public class MinNumOfKeypresses2268 {
 
-    private static class LetterCount {
-        int count;
-        public LetterCount(int count) {
-            this.count = count;
-        }
-    }
     public int minimumKeypresses(String s) {
         
-        LetterCount[] letterCounts = new LetterCount[26];
+        // Use Integer instead of int so that we can sort it easily.
+        Integer[] letterCounts = new Integer[26];
         // Initialize the array
         for (int i = 0; i < 26; i++) {
-            letterCounts[i] = new LetterCount(0);
+            letterCounts[i] = 0;
         }
 
         for (char ch : s.toCharArray()) {
             int idx = ch - 'a';
-            letterCounts[idx].count = letterCounts[idx].count + 1;
+            letterCounts[idx] = letterCounts[idx] + 1;
         }
 
-        Arrays.sort(letterCounts, (a, b) -> b.count - a.count);
+        Arrays.sort(letterCounts, (a, b) -> b - a);
 
         int keyPressCount = 0;
         for (int i = 0; i < 26; i++) {
-            keyPressCount += letterCounts[i].count * (i / 9 + 1);
+            keyPressCount += letterCounts[i] * (i / 9 + 1);
         }
 
         return keyPressCount;
