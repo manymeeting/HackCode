@@ -67,10 +67,55 @@ dry day lndex [1, 4]
 1 <= rains.length <= 105
 0 <= rains[i] <= 109
 
-
+思路：遍历一遍，每次遇到重复的lake就尝试找一下有没有dry day可以用。难点在于要考虑dry day和对应的lake出现的先后顺序。可以用TreeSet的ceiling来优化这个查找。
  */
 public class AvoidFloodInTheCity1488 {
 
+    // 解法2：用Treeset来优化查找比一个index大的最小dry day。复杂度nlog(n)
+    public int[] avoidFlood2(int[] rains) {
+        int[] res = new int[rains.length];
+        Arrays.fill(res, -1);
+
+        Map<Integer, Integer> fullLakeToIndex = new HashMap<>();
+        TreeSet<Integer> dryDayIndexes = new TreeSet<>();
+
+        for (int i = 0; i < rains.length; i++) {
+            int rain = rains[i];
+            if (rain > 0) {
+                // Check if we need to choose a lake to dry
+                if (!dryDayIndexes.isEmpty() && fullLakeToIndex.containsKey(rain)) {
+                    // Try to dry this lake ahead
+                    Integer toDryIndex = dryDayIndexes.ceiling(fullLakeToIndex.get(rain));
+
+                    if (toDryIndex != null) {
+                        res[toDryIndex] = rain;
+                        dryDayIndexes.remove(toDryIndex);
+                        fullLakeToIndex.remove(rain);
+                    }
+                    
+                }
+                // Will flood.
+                if (fullLakeToIndex.containsKey(rain)) {
+                    return new int[0];
+                }
+
+                fullLakeToIndex.put(rain, i);
+                
+            }
+            if (rain == 0) {
+                dryDayIndexes.add(i); 
+            }
+        }
+        
+        // As required to pass the tests
+        for (int i : dryDayIndexes) {
+             // Too many dry days, just dry 1st lake by default.
+            res[i] = 1;
+        }
+        return res;
+    }
+    
+    // 解法1：用hashmap和list来做，复杂度n^2
     public int[] avoidFlood(int[] rains) {
         
         int[] res = new int[rains.length];
