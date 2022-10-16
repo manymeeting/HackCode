@@ -1,4 +1,4 @@
-package arrays;
+package datastruct.treeset;
 
 import java.util.TreeSet;
 
