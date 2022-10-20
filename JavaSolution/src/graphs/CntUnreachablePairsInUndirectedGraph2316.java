@@ -22,23 +22,37 @@ There are no repeated edges.
 思路：用union find找出分隔的graph数量，然后用一个graph的node总数乘以其余graph的node数之和来计算pair数量。
  */
 public class CntUnreachablePairsInUndirectedGraph2316 {
-    int parents[];
-
+    int parents[]; 
+    int rank[];
+    
     private void union(int u, int v) {
         int parentU = find(u);
         int parentV = find(v);
-        parents[parentU] = parentV;
+        if (parentU == parentV) {
+            return;
+        }
+        if (rank[parentU] < rank[parentV]) {
+            parents[parentU] = parentV;
+        } else if (rank[parentU] > rank[parentV]) {
+            parents[parentV] = parentU;
+        } else {
+            parents[parentU] = parentV;
+            rank[parentV]++;
+        }
+        
     }
 
     private int find(int x) {
-        while(x != parents[x]) {
-            x = parents[x];
+        int p = x;
+        while(p != parents[p]) {
+            p = parents[p];
         }
-        return x;
+        return p;
     }
 
     public long countPairs(int n, int[][] edges) {
         parents = new int[n];
+        rank = new int[n];
         for (int i = 0; i < n; i++) {
             parents[i] = i;
         }
@@ -55,11 +69,16 @@ public class CntUnreachablePairsInUndirectedGraph2316 {
 
         // Calculate the number of pairs
         long res = 0;
+        long sum = 0;
         for (int size : connectedGraphRootToSize.values()) {
-            res += size * (n - size);
+            sum += (long) size;
+        }
+        for (int size : connectedGraphRootToSize.values()) {
+            res += size * (sum - size);
+            sum -= size;
         }
         
         // We counted each pair twice.
-        return res / 2;
+        return res;
     }
 }
