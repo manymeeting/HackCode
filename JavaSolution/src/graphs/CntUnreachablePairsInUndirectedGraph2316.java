@@ -78,7 +78,6 @@ public class CntUnreachablePairsInUndirectedGraph2316 {
             sum -= size;
         }
         
-        // We counted each pair twice.
         return res;
     }
 }
