@@ -49,8 +49,36 @@ one l3 + one l2
 
 
 思考：观察发现一个规律，只要在左括号变成右括号的时候，在pop的同时按照stack里的size来加一下当前这一对的最终等效value即可。
+
+优化：进一步观察可发现，只需要一个int就可以替换stack，int代表当前累计的左括号的个数。
  */
 public class ScoreOfParentheses856 {
+
+    // 优化：用int代替stack
+    public int scoreOfParentheses2(String s) {
+        int sum = 0;
+        int balance = 0;
+
+        boolean addingLeft = true;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch == '(') {
+                balance++;
+                addingLeft = true;
+            }
+            else {
+                if (addingLeft) {
+                    // Direction changed, update sum.
+                    sum += (1 << balance - 1);
+                    addingLeft = false;
+                }
+                balance--;
+            }
+        }
+        return sum;
+    }
+
+    // 基本解法
     public int scoreOfParentheses(String s) {
         int sum = 0;
         Deque<Character> stack = new ArrayDeque<>();
