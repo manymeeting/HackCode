@@ -33,7 +33,7 @@ package dp;
  *
  (i, j) = 1 + min { f(i, j - 1), f(i - 1, j), f(i - 1, j - 1) }
 
- f(i, j - 1) represents insert operation
+ f(i, j - 1) represents insert operation // 为何是i不变, j-1, 因为是在i前面insert了一个char来match原来j的char，原来的i现在相当于指向了和j下一位匹配的位置。
  f(i - 1, j) represents delete operation
  f(i - 1, j - 1) represents replace operation
  */
@@ -71,7 +71,7 @@ public class EditDistance72 {
                     int a = cost[i][j];
                     int b = cost[i][j + 1];
                     int c = cost[i + 1][j];
-
+                    // 1 + MIN(a, b, c)
                     cost[i + 1][j + 1] = a < b ? ( a < c ? a : c): (b < c ? b : c);
                     cost[i + 1][j + 1]++;
                 }
