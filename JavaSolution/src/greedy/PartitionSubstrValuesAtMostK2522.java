@@ -1,7 +1,6 @@
 package greedy;
 
 /**
- * 
 You are given a string s consisting of digits from 1 to 9 and an integer k.
 
 A partition of a string s is called good if:
@@ -37,7 +36,9 @@ s[i] is a digit from '1' to '9'.
  
 
 思路：难点在于找出greedy的模式，然后分析出invalid的判断方法。属于Greedy模式。
- */
+
+*/
+
 public class PartitionSubstrValuesAtMostK2522 {
     
     public int minimumPartition(String s, int k) {
